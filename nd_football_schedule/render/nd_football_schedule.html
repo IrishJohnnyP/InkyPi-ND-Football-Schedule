@@ -1,43 +1,39 @@
 {% extends "plugin.html" %}
 
 {% block content %}
-<div class="nd-container">
-  <header class="nd-header">
-    https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png
+<div class="nd-container font-{{ plugin_settings.font_size | default('normal') }}">
+    <header class="nd-header">
+        https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png
 
-    <div class="nd-title">
-      <div class="nd-name">{{ team.name }}</div>
-      <div class="nd-record">Record: {{ team.record }}</div>
+        <div class="nd-title">
+            <div class="nd-name">{{ team.name }}</div>
+            <div class="nd-record">Record: {{ team.record }}</div>
+        </div>
+
+        <div class="nd-season">{{ season }} Season</div>
+    </header>
+
+    <div class="nd-table">
+        <div class="nd-row nd-head">
+            <span>Date</span>
+            <span>Time</span>
+            <span>Opponent</span>
+            <span>Site</span>
+            <span>Result</span>
+        </div>
+
+        {% for game in games %}
+        <div class="nd-row">
+            <span>{{ game.date | date("%b %d") }}</span>
+            <span>{{ game.time or "TBD" }}</span>
+            <span class="nd-opponent">
+                {% if game.opponent.rank %}#{{ game.opponent.rank }} {% endif %}
+                {{ game.opponent.name }}
+            </span>
+            <span>{{ game.homeAway | capitalize }}</span>
+            <span>{{ game.result or "—" }}</span>
+        </div>
+        {% endfor %}
     </div>
-
-    <div class="nd-season">{{ season }} Season</div>
-  </header>
-
-  <div class="nd-table">
-    <div class="nd-row nd-head">
-      <span>Date</span>
-      <span>Time</span>
-      <span>Opponent</span>
-      <span>Site</span>
-      <span>Result</span>
-    </div>
-
-    {% for game in games %}
-    <div class="nd-row">
-      <span>{{ game.date | default("—") | date("%b %d") }}</span>
-      <span>{{ game.time or "TBD" }}</span>
-
-      <span class="nd-opponent">
-        {% if game.opponent.rank %}
-        <strong>#{{ game.opponent.rank }}</strong>
-        {% endif %}
-        {{ game.opponent.name }}
-      </span>
-
-      <span>{{ game.homeAway | capitalize }}</span>
-      <span>{{ game.result or "—" }}</span>
-    </div>
-    {% endfor %}
-  </div>
 </div>
 {% endblock %}
