@@ -4,26 +4,27 @@
 <div class="nd-container font-{{ plugin_settings.font_size | default('normal') }}">
 
   <div class="nd-header">
-    {% if team.id %}
-      <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" class="nd-logo" alt="ND">
-    {% endif %}
+    <div class="nd-header-left">
+      {% if team.id %}
+        <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" class="nd-logo" alt="ND">
+      {% endif %}
 
-    <div class="nd-title">
-      <div class="nd-name">
-        Notre Dame Football {{ season }}
+      <div class="nd-title">
+        <div class="nd-name">Notre Dame Football {{ season }}</div>
       </div>
-      <div class="nd-record">
-        Record: {{ team.record }}
-      </div>
+    </div>
+    
+    <div class="nd-record-header">
+      Record: {{ team.record }}
     </div>
   </div>
 
   <div class="nd-row nd-head">
     <div>Date</div>
     <div>Time</div>
-    <div>Opponent</div>
-    <div>Site</div>
-    <div>Result</div>
+    <div class="opp-head">Opponent</div>
+    <div class="site-head">Site</div>
+    <div class="res-head">Result</div>
   </div>
 
   {% for game in games %}
