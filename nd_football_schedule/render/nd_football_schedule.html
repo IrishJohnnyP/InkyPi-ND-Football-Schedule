@@ -42,6 +42,9 @@
       {% endif %}
 
       <div class="school">
+        {% if game.opponent.rank %}
+          <span class="rank">#{{ game.opponent.rank }}</span>
+        {% endif %}
         {{ game.opponent.name }}
         {% if game.opponent.mascot %}
           <span class="nickname">({{ game.opponent.mascot }})</span>
@@ -50,7 +53,11 @@
     </div>
 
     <div class="site">
-      {{ game.homeAway | capitalize }}
+      {% if game.homeAway == "neutral" %}
+        <span class="site-neutral">N</span>
+      {% else %}
+        {{ game.homeAway | capitalize | first }}
+      {% endif %}
     </div>
 
     <div class="result {% if game.result and game.result.startswith('L') %}loss{% endif %}">
