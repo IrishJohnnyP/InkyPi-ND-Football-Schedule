@@ -16,8 +16,10 @@
 
 .nd-logo {
     height: 48px;
+    width: auto;
 }
 
+/* Title text */
 .nd-title {
     display: flex;
     flex-direction: column;
