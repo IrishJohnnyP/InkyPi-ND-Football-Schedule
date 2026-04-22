@@ -6,38 +6,43 @@
   font-family: Roboto, Arial, sans-serif;
 }
 
-/* HEADER */
+/* HEADER - Now uses Space-Between for the Record */
 .nd-header {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+}
+
+.nd-header-left {
+  display: flex;
   align-items: center;
-  margin-bottom: 6px;
 }
 
 .nd-logo {
-  height: 48px;
+  height: 52px;
   margin-right: 12px;
 }
 
-.nd-title {
-  display: flex;
-  flex-direction: column;
-}
-
 .nd-name {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
 }
 
-.nd-record {
-  font-size: 14px;
+.nd-record-header {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
 }
 
 /* TABLE GRID */
 .nd-row {
   display: grid;
-  /* Optimized for Time and Site display */
-  grid-template-columns: 6ch 10ch minmax(0, 1fr) 4ch 8ch;
-  column-gap: 10px;
+  /* 1fr expands the Opponent column to fill all remaining space */
+  grid-template-columns: 6ch 10ch 1fr 4ch 10ch;
+  column-gap: 8px;
   align-items: center;
 }
 
@@ -58,13 +63,7 @@
   width: 22px;
   height: 22px;
   margin-right: 6px;
-  image-rendering: crisp-edges;
-}
-
-.rank {
-  font-size: 0.8em;
-  color: #666;
-  margin-right: 2px;
+  flex-shrink: 0;
 }
 
 .school {
@@ -74,22 +73,20 @@
   text-overflow: ellipsis;
 }
 
-.nickname {
-  font-weight: 400;
+/* ALIGNMENT */
+.site, .site-head {
+  text-align: center;
 }
 
-/* SITE STYLING */
-.site {
-  text-align: center;
-  font-weight: 600;
+.result, .res-head {
+  text-align: right; /* Right justifies the Result column */
 }
 
 .site-neutral {
-  color: #FF0000; /* Red "N" for Neutral Sites */
+  color: #FF0000;
   font-weight: 800;
 }
 
-/* RESULT COLORS */
 .loss {
   color: #FF0000;
   font-weight: 700;
