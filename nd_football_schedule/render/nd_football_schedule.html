@@ -1,4 +1,4 @@
-{% extends "plugin.html" %}
+% extends "plugin.html" %}
 
 {% block content %}
 <div class="nd-container font-{{ plugin_settings.font_size | default('normal') }}">
@@ -6,11 +6,11 @@
         https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png
 
         <div class="nd-title">
-            <div class="nd-name">{{ team.name }}</div>
+            <div class="nd-name">
+                Notre Dame Football Schedule for {{ season }}
+            </div>
             <div class="nd-record">Record: {{ team.record }}</div>
         </div>
-
-        <div class="nd-season">{{ season }} Season</div>
     </header>
 
     <div class="nd-table">
@@ -24,12 +24,23 @@
 
         {% for game in games %}
         <div class="nd-row">
-            <span>{{ game.date or "—" }}</span>
+            <!-- Month‑Day derived safely from YYYY‑MM‑DD -->
+            <span>{{ game.date[-5:] if game.date else "—" }}</span>
+
             <span>{{ game.time or "TBD" }}</span>
+
             <span class="nd-opponent">
-                {% if game.opponent.rank %}#{{ game.opponent.rank }} {% endif %}
+                {% if game.opponent.logo %}
+                {{ game.opponent.logo }}
+                {% endif %}
                 {{ game.opponent.name }}
+                {% if game.opponent.mascot %}
+                <span class="nd-mascot">
+                    ({{ game.opponent.mascot }})
+                </span>
+                {% endif %}
             </span>
+
             <span>{{ game.homeAway | capitalize }}</span>
             <span>{{ game.result or "—" }}</span>
         </div>
