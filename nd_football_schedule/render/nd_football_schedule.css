@@ -6,11 +6,11 @@
   font-family: Roboto, Arial, sans-serif;
 }
 
-/* HEADER - Now uses Space-Between for the Record */
+/* HEADER - Single line with record pushed to the right */
 .nd-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center; /* Vertical alignment on one line */
   margin-bottom: 8px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 4px;
@@ -22,25 +22,27 @@
 }
 
 .nd-logo {
-  height: 52px;
+  height: 40px; /* Slightly smaller to keep the line height tight */
   margin-right: 12px;
 }
 
 .nd-name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .nd-record-header {
   font-size: 16px;
   font-weight: 600;
   text-align: right;
+  white-space: nowrap;
 }
 
 /* TABLE GRID */
 .nd-row {
   display: grid;
-  /* 1fr expands the Opponent column to fill all remaining space */
+  /* Opponent (3rd col) is 1fr to expand; Result (last col) is fixed to 10ch */
   grid-template-columns: 6ch 10ch 1fr 4ch 10ch;
   column-gap: 8px;
   align-items: center;
@@ -57,11 +59,12 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  min-width: 0; /* Important for flex-shrink/ellipsis to work */
 }
 
 .logo-sm {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   margin-right: 6px;
   flex-shrink: 0;
 }
@@ -79,7 +82,7 @@
 }
 
 .result, .res-head {
-  text-align: right; /* Right justifies the Result column */
+  text-align: right;
 }
 
 .site-neutral {
