@@ -1,12 +1,30 @@
 {% extends "plugin.html" %}
 {% block content %}
 
+<style>
+  /* Basic styling to keep logos contained on the InkyPi display */
+  .nd-header img {
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
+  }
+  .nd-row img.logo-sm {
+    height: 20px;
+    width: auto;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .opp {
+    display: flex;
+    align-items: center;
+  }
+</style>
+
 <div class="nd-container font-{{ plugin_settings.font_size | default('normal') }}">
 
-  <!-- HEADER -->
-  <div class="nd-header">
+  <div class="nd-header" style="display: flex; align-items: center;">
     {% if team.id %}
-      https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png
+      <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" alt="ND Logo">
     {% endif %}
 
     <div class="nd-title">
@@ -19,7 +37,6 @@
     </div>
   </div>
 
-  <!-- COLUMN HEADERS -->
   <div class="nd-row nd-head">
     <div>Date</div>
     <div>Time</div>
@@ -28,7 +45,6 @@
     <div>Result</div>
   </div>
 
-  <!-- ROWS -->
   {% for game in games %}
   <div class="nd-row">
     <div class="date">
@@ -41,7 +57,7 @@
 
     <div class="opp">
       {% if game.opponent.logo %}
-        {{ game.opponent.logo }}
+        <img src="{{ game.opponent.logo }}" class="logo-sm" alt="">
       {% endif %}
 
       <div class="school">
