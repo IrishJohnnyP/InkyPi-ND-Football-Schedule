@@ -1,2 +1,31 @@
-<label for="season">Season (optional):</label>
-<input type="number" name="season" min="2000" max="2100" placeholder="e.g. 2026">
+<div class="form-group">
+    <label for="season" class="form-label">Season</label>
+    <input
+        type="number"
+        id="season"
+        name="season"
+        class="form-input"
+        placeholder="2026 (leave blank for current)"
+    />
+</div>
+
+<div class="form-group">
+    <label for="font_size" class="form-label">Font Size</label>
+    <select id="font_size" name="font_size" class="form-input">
+        <option value="small">Small</option>
+        <option value="normal">Normal</option>
+        <option value="large">Large</option>
+    </select>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (loadPluginSettings) {
+            document.getElementById('season').value =
+                pluginSettings.season || '';
+
+            document.getElementById('font_size').value =
+                pluginSettings.font_size || 'normal';
+        }
+    });
+</script>
