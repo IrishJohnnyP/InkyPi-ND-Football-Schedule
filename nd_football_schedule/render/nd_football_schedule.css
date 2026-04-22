@@ -8,15 +8,14 @@
 
 /* HEADER */
 .nd-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 12px;
+  display: flex;
   align-items: center;
   margin-bottom: 6px;
 }
 
 .nd-logo {
   height: 48px;
+  margin-right: 12px;
 }
 
 .nd-title {
@@ -36,7 +35,8 @@
 /* TABLE GRID */
 .nd-row {
   display: grid;
-  grid-template-columns: 6ch 7ch minmax(0, 1fr) 7ch 8ch;
+  /* Time column increased from 7ch to 10ch */
+  grid-template-columns: 6ch 10ch minmax(0, 1fr) 7ch 8ch;
   column-gap: 10px;
   align-items: center;
 }
@@ -49,16 +49,15 @@
 
 /* OPPONENT CELL */
 .opp {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 6px;
+  display: flex;
   align-items: center;
   overflow: hidden;
 }
 
-.logo {
+.logo-sm {
   width: 22px;
   height: 22px;
+  margin-right: 6px;
   image-rendering: crisp-edges;
 }
 
@@ -71,6 +70,12 @@
 
 .nickname {
   font-weight: 400;
+}
+
+/* RESULT COLORS */
+.loss {
+  color: #FF0000; /* Spectra 6 Red */
+  font-weight: 700;
 }
 
 /* FONT SIZE MODES */
