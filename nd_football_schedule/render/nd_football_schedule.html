@@ -1,35 +1,16 @@
 {% extends "plugin.html" %}
 {% block content %}
 
-<style>
-  /* Basic styling to keep logos contained on the InkyPi display */
-  .nd-header img {
-    height: 60px;
-    width: auto;
-    margin-right: 10px;
-  }
-  .nd-row img.logo-sm {
-    height: 20px;
-    width: auto;
-    margin-right: 5px;
-    vertical-align: middle;
-  }
-  .opp {
-    display: flex;
-    align-items: center;
-  }
-</style>
-
 <div class="nd-container font-{{ plugin_settings.font_size | default('normal') }}">
 
-  <div class="nd-header" style="display: flex; align-items: center;">
+  <div class="nd-header">
     {% if team.id %}
-      <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" alt="ND Logo">
+      <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" class="nd-logo" alt="ND">
     {% endif %}
 
     <div class="nd-title">
       <div class="nd-name">
-        Notre Dame Football Schedule for {{ season }}
+        Notre Dame Football {{ season }}
       </div>
       <div class="nd-record">
         Record: {{ team.record }}
@@ -57,15 +38,13 @@
 
     <div class="opp">
       {% if game.opponent.logo %}
-        <img src="{{ game.opponent.logo }}" class="logo-sm" alt="">
+        <img src="{{ game.opponent.logo }}" class="logo-sm">
       {% endif %}
 
       <div class="school">
         {{ game.opponent.name }}
         {% if game.opponent.mascot %}
-          <span class="nickname">
-            ({{ game.opponent.mascot }})
-          </span>
+          <span class="nickname">({{ game.opponent.mascot }})</span>
         {% endif %}
       </div>
     </div>
@@ -74,7 +53,7 @@
       {{ game.homeAway | capitalize }}
     </div>
 
-    <div class="result">
+    <div class="result {% if game.result and game.result.startswith('L') %}loss{% endif %}">
       {{ game.result or "—" }}
     </div>
   </div>
