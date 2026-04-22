@@ -24,7 +24,7 @@
 }
 
 .nd-name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -35,8 +35,8 @@
 /* TABLE GRID */
 .nd-row {
   display: grid;
-  /* Time column increased from 7ch to 10ch */
-  grid-template-columns: 6ch 10ch minmax(0, 1fr) 7ch 8ch;
+  /* Optimized for Time and Site display */
+  grid-template-columns: 6ch 10ch minmax(0, 1fr) 4ch 8ch;
   column-gap: 10px;
   align-items: center;
 }
@@ -61,6 +61,12 @@
   image-rendering: crisp-edges;
 }
 
+.rank {
+  font-size: 0.8em;
+  color: #666;
+  margin-right: 2px;
+}
+
 .school {
   font-weight: 600;
   white-space: nowrap;
@@ -72,9 +78,20 @@
   font-weight: 400;
 }
 
+/* SITE STYLING */
+.site {
+  text-align: center;
+  font-weight: 600;
+}
+
+.site-neutral {
+  color: #FF0000; /* Red "N" for Neutral Sites */
+  font-weight: 800;
+}
+
 /* RESULT COLORS */
 .loss {
-  color: #FF0000; /* Spectra 6 Red */
+  color: #FF0000;
   font-weight: 700;
 }
 
