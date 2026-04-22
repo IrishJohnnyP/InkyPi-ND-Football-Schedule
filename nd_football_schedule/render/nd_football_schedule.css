@@ -1,80 +1,79 @@
 .nd-container {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 12px;
-    padding: 8px;
-    font-family: Roboto, Arial, sans-serif;
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: 6px;
+  padding: 8px;
+  font-family: Roboto, Arial, sans-serif;
 }
 
-/* Header */
+/* HEADER */
 .nd-header {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 14px;
-    align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  align-items: center;
+  margin-bottom: 6px;
 }
 
 .nd-logo {
-    height: 48px;
-    width: auto;
+  height: 48px;
 }
 
-/* Title text */
 .nd-title {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .nd-name {
-    font-size: 22px;
-    font-weight: 700;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .nd-record {
-    font-size: 14px;
+  font-size: 14px;
 }
 
-/* Table layout */
-.nd-table {
-    display: grid;
-}
-
+/* TABLE GRID */
 .nd-row {
-    display: grid;
-    grid-template-columns: 6ch 7ch minmax(0, 1fr) 7ch 8ch;
-    gap: 10px;
-    padding: 4px 0;
-    border-bottom: 1px solid #000;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 6ch 7ch minmax(0, 1fr) 7ch 8ch;
+  column-gap: 10px;
+  align-items: center;
 }
 
 .nd-head {
-    font-weight: 700;
-    border-bottom: 3px solid #000;
+  font-weight: 700;
+  border-bottom: 3px solid #000;
+  padding-bottom: 4px;
 }
 
-/* Opponent cell */
-.nd-opponent {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 6px;
-    align-items: center;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
+/* OPPONENT CELL */
+.opp {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 6px;
+  align-items: center;
+  overflow: hidden;
 }
 
-.opp-logo {
-    width: 22px;
-    height: 22px;
-    image-rendering: crisp-edges;
+.logo {
+  width: 22px;
+  height: 22px;
+  image-rendering: crisp-edges;
 }
 
-.nd-mascot {
-    font-weight: 400;
+.school {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Font size modifiers */
+.nickname {
+  font-weight: 400;
+}
+
+/* FONT SIZE MODES */
 .font-small { font-size: 14px; }
 .font-normal { font-size: 16px; }
 .font-large { font-size: 18px; }
