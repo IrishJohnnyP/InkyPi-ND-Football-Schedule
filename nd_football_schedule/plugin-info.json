@@ -1,1 +1,10 @@
-
+{
+  "id": "nd_football_schedule",
+  "name": "Notre Dame Football Schedule",
+  "class": "NDFootballSchedule",
+  "version": "1.0.0",
+  "description": "Displays the Notre Dame Fighting Irish football schedule.",
+  "author": "IrishJohnnyP",
+  "repository": "https://github.com/IrishJohnnyP/InkyPi-ND-Football-Schedule",
+  "category": "Sports"
+}
