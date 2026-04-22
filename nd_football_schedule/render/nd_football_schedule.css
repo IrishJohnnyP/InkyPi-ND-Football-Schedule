@@ -1,20 +1,25 @@
 .nd-container {
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 10px;
+    gap: 12px;
     padding: 8px;
     font-family: Roboto, Arial, sans-serif;
 }
 
 .nd-header {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 12px;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
     align-items: center;
 }
 
 .nd-logo {
-    height: 44px;
+    height: 48px;
+}
+
+.nd-title {
+    display: flex;
+    flex-direction: column;
 }
 
 .nd-name {
@@ -26,26 +31,41 @@
     font-size: 14px;
 }
 
-.nd-season {
-    font-size: 14px;
-    font-weight: 700;
-}
-
 .nd-table {
     display: grid;
 }
 
 .nd-row {
     display: grid;
-    grid-template-columns: 7ch 7ch minmax(0, 1fr) 7ch 8ch;
+    grid-template-columns: 6ch 7ch minmax(0, 1fr) 7ch 8ch;
     gap: 10px;
     padding: 4px 0;
     border-bottom: 1px solid #000;
+    align-items: center;
 }
 
 .nd-head {
     font-weight: 700;
     border-bottom: 3px solid #000;
+}
+
+.nd-opponent {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.opp-logo {
+    width: 22px;
+    height: 22px;
+}
+
+.nd-mascot {
+    font-weight: 400;
 }
 
 /* Font size modifiers */
