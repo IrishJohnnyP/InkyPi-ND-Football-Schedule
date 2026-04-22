@@ -24,7 +24,7 @@
 
         {% for game in games %}
         <div class="nd-row">
-            <span>{{ game.date | date("%b %d") }}</span>
+            <span>{{ game.date or "—" }}</span>
             <span>{{ game.time or "TBD" }}</span>
             <span class="nd-opponent">
                 {% if game.opponent.rank %}#{{ game.opponent.rank }} {% endif %}
