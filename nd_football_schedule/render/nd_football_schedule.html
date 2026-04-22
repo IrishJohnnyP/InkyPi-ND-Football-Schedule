@@ -1,57 +1,69 @@
 {% extends "plugin.html" %}
-
 {% block content %}
+
 <div class="nd-container font-{{ plugin_settings.font_size | default('normal') }}">
 
-    <header class="nd-header">
-        https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png
+  <!-- HEADER -->
+  <div class="nd-header">
+    {% if team.id %}
+      https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png
+    {% endif %}
 
-        <div class="nd-title">
-            <div class="nd-name">
-                Notre Dame Football Schedule for {{ season }}
-            </div>
-            <div class="nd-record">
-                Record: {{ team.record }}
-            </div>
-        </div>
-    </header>
+    <div class="nd-title">
+      <div class="nd-name">
+        Notre Dame Football Schedule for {{ season }}
+      </div>
+      <div class="nd-record">
+        Record: {{ team.record }}
+      </div>
+    </div>
+  </div>
 
-    <div class="nd-table">
-        <div class="nd-row nd-head">
-            <span>Date</span>
-            <span>Time</span>
-            <span>Opponent</span>
-            <span>Site</span>
-            <span>Result</span>
-        </div>
+  <!-- COLUMN HEADERS -->
+  <div class="nd-row nd-head">
+    <div>Date</div>
+    <div>Time</div>
+    <div>Opponent</div>
+    <div>Site</div>
+    <div>Result</div>
+  </div>
 
-        {% for game in games %}
-        <div class="nd-row">
-            <!-- Month-Day only -->
-            <span>{{ game.date[-5:] if game.date else "—" }}</span>
-
-            <span>{{ game.time or "TBD" }}</span>
-
-            <span class="nd-opponent">
-                {% if game.opponent.logo %}
-                {{ game.opponent.logo }}
-                {% endif %}
-
-                <span class="opp-name">
-                    {{ game.opponent.name }}
-                    {% if game.opponent.mascot %}
-                    <span class="nd-mascot">
-                        ({{ game.opponent.mascot }})
-                    </span>
-                    {% endif %}
-                </span>
-            </span>
-
-            <span>{{ game.homeAway | capitalize }}</span>
-            <span>{{ game.result or "—" }}</span>
-        </div>
-        {% endfor %}
+  <!-- ROWS -->
+  {% for game in games %}
+  <div class="nd-row">
+    <div class="date">
+      {{ game.date[-5:] if game.date else "—" }}
     </div>
 
+    <div class="time">
+      {{ game.time or "TBD" }}
+    </div>
+
+    <div class="opp">
+      {% if game.opponent.logo %}
+        {{ game.opponent.logo }}
+      {% endif %}
+
+      <div class="school">
+        {{ game.opponent.name }}
+        {% if game.opponent.mascot %}
+          <span class="nickname">
+            ({{ game.opponent.mascot }})
+          </span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="site">
+      {{ game.homeAway | capitalize }}
+    </div>
+
+    <div class="result">
+      {{ game.result or "—" }}
+    </div>
+  </div>
+  {% endfor %}
+
 </div>
+
 {% endblock %}
