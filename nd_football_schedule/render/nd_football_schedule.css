@@ -3,20 +3,20 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 12px; /* Increased padding */
   box-sizing: border-box;
   font-family: Roboto, Arial, sans-serif;
 }
 
-/* HEADER - Forced to full width with Space-Between */
+/* HEADER */
 .nd-header {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #000;
-  padding-bottom: 5px;
+  margin-bottom: 12px;
+  border-bottom: 3px solid #000;
+  padding-bottom: 8px;
 }
 
 .nd-header-left {
@@ -25,72 +25,93 @@
 }
 
 .nd-logo {
-  height: 35px;
-  margin-right: 10px;
+  height: 48px; /* Increased size */
+  margin-right: 12px;
 }
 
 .nd-name {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 28px; /* High emphasis for ND Title */
+  font-weight: 800;
 }
 
 .nd-header-right {
-  font-size: 16px;
+  font-size: 18px; /* Larger, but smaller than the Title */
   font-weight: 600;
 }
 
-/* TABLE GRID - The critical fix is here */
+/* TABLE GRID */
 .nd-row {
   display: grid;
-  /* Fixed widths for secondary data, 1fr for the opponent */
-  grid-template-columns: 50px 85px 1fr 35px 90px;
-  column-gap: 8px;
+  /* Date (~60px), Time (~100px), Opponent (Flexible), Site (~80px), Result (~100px) */
+  grid-template-columns: 60px 105px 1fr 85px 105px;
+  column-gap: 12px;
   align-items: center;
   width: 100%;
+  margin-bottom: 4px;
 }
 
 .nd-head {
   font-weight: 700;
   border-bottom: 2px solid #000;
-  padding-bottom: 4px;
-  margin-bottom: 4px;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  font-size: 1.1em;
 }
 
-/* OPPONENT CELL - Flex logic to allow internal shrinking */
+/* OPPONENT CELL */
 .opp {
   display: flex;
   align-items: center;
-  min-width: 0; /* Allows the container to shrink if needed */
+  min-width: 0;
   overflow: hidden;
 }
 
 .logo-sm {
-  width: 20px;
-  height: 20px;
-  margin-right: 6px;
+  width: 24px; /* Increased logo size */
+  height: 24px;
+  margin-right: 8px;
   flex-shrink: 0;
 }
 
 .school {
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex-grow: 1; /* Pushes against the other grid boundaries */
+  flex-grow: 1;
 }
 
 /* ALIGNMENT & COLORS */
-.site { text-align: center; font-weight: 600; }
-.result { text-align: right; font-weight: 600; }
+.site { 
+  text-align: center; 
+}
 
-.site-neutral, .loss {
+.result { 
+  text-align: right; 
+  font-weight: 700; 
+}
+
+.site-neutral {
+  color: #FF0000; /* Red for Neutral sites */
+  font-weight: 700;
+}
+
+.loss {
   color: #FF0000;
 }
 
-.rank { font-size: 0.85em; color: #444; margin-right: 2px; }
-.nickname { font-weight: 400; font-size: 0.9em; }
+.rank { 
+  font-size: 0.85em; 
+  color: #444; 
+  margin-right: 3px; 
+}
 
-/* FONT SIZE MODES */
-.font-small { font-size: 12px; }
-.font-normal { font-size: 14px; }
-.font-large { font-size: 16px; }
+.nickname { 
+  font-weight: 400; 
+  font-size: 0.9em; 
+}
+
+/* FONT SIZE MODES - Scaled up for extra room */
+.font-small { font-size: 16px; }
+.font-normal { font-size: 18px; }
+.font-large { font-size: 21px; }
