@@ -10,7 +10,6 @@
       {% endif %}
       <span class="nd-name">Notre Dame Football {{ season }}</span>
     </div>
-    
     <div class="nd-header-right">
       Record: {{ team.record }}
     </div>
@@ -26,14 +25,8 @@
 
   {% for game in games %}
   <div class="nd-row">
-    <div class="date">
-      {{ game.date[-5:] if game.date else "—" }}
-    </div>
-
-    <div class="time">
-      {{ game.time or "TBD" }}
-    </div>
-
+    <div class="date">{{ game.date[-5:] if game.date else "—" }}</div>
+    <div class="time">{{ game.time or "TBD" }}</div>
     <div class="opp">
       {% if game.opponent.logo %}
         <img src="{{ game.opponent.logo }}" class="logo-sm">
@@ -44,17 +37,11 @@
         {% if game.opponent.mascot %}<span class="nickname">({{ game.opponent.mascot }})</span>{% endif %}
       </div>
     </div>
-
     <div class="site">
-      {% if game.homeAway == "neutral" %}
-        <span class="site-neutral">Neutral</span>
-      {% elif game.homeAway == "home" %}
-        Home
-      {% else %}
-        Away
-      {% endif %}
+      {% if game.homeAway == "neutral" %}<span class="site-neutral">Neutral</span>
+      {% elif game.homeAway == "home" %}Home
+      {% else %}Away{% endif %}
     </div>
-
     <div class="result {% if game.result and game.result.startswith('L') %}loss{% endif %}">
       {{ game.result or "—" }}
     </div>
