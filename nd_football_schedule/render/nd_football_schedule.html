@@ -47,9 +47,11 @@
 
     <div class="site">
       {% if game.homeAway == "neutral" %}
-        <span class="site-neutral">N</span>
+        <span class="site-neutral">Neutral</span>
+      {% elif game.homeAway == "home" %}
+        Home
       {% else %}
-        {{ game.homeAway | capitalize | first }}
+        Away
       {% endif %}
     </div>
 
