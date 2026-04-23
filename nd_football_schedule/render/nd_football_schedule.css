@@ -8,15 +8,15 @@
   --header-font: 84px;  
   --record-font: 42px;
   --row-gap: 8px;       
-  --column-gap: 20px;   /* Slightly reduced for 6 cols */
+  --column-gap: 20px;
   --font-normal: 52px; 
   --logo-header: 100px; 
   --logo-sm: 64px;      
   /* Grid Columns - 13.3" */
   --col-date: 140px;
   --col-time: 240px;
-  --col-opp: 1fr;       /* Flexible */
-  --col-rec: 160px;     /* NEW Opponent Record Column */
+  --col-opp: 1fr;
+  --col-rec: 180px;     /* Room for "10-2" at 52px */
   --col-site: 200px;
   --col-res: 260px;
   --nickname-display: none;
@@ -37,14 +37,13 @@
     --col-date: 55px;
     --col-time: 90px;
     --col-opp: 1fr;
-    --col-rec: 60px;    /* NEW Opponent Record Column */
+    --col-rec: 65px;    /* Room for "10-2" at 18px */
     --col-site: 75px;
     --col-res: 95px;
     --nickname-display: inline;
   }
 }
 
-/* GLOBAL FONT AND OVERRIDE */
 .nd-container, 
 .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
@@ -58,7 +57,6 @@
   font-size: var(--font-normal) !important;
 }
 
-/* TABLE GRID - 6 COLUMNS */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
@@ -70,10 +68,10 @@
 
 .opp-record {
   text-align: center;
-  font-weight: 400; /* Lighter than school for contrast */
+  font-weight: 400;
 }
 
-/* Rest of the styles... */
+/* Rest of the established styles */
 .nickname { display: var(--nickname-display) !important; font-weight: 400; font-size: 0.85em !important; opacity: 0.8; }
 .nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
 .nd-header-right { font-size: var(--record-font) !important; font-weight: 700 !important; }
