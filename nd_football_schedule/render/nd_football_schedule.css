@@ -1,19 +1,22 @@
+/* Reset and Container */
 .nd-container {
-  display: grid;
-  grid-auto-rows: min-content;
-  row-gap: 6px;
-  padding: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
   font-family: Roboto, Arial, sans-serif;
 }
 
-/* HEADER - Keeps everything on one line */
+/* HEADER - Forced to full width with Space-Between */
 .nd-header {
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  align-items: center; 
-  margin-bottom: 8px;
+  align-items: center;
+  margin-bottom: 10px;
   border-bottom: 2px solid #000;
-  padding-bottom: 4px;
+  padding-bottom: 5px;
 }
 
 .nd-header-left {
@@ -22,28 +25,25 @@
 }
 
 .nd-logo {
-  height: 32px;
+  height: 35px;
   margin-right: 10px;
 }
 
 .nd-name {
   font-size: 20px;
   font-weight: 700;
-  white-space: nowrap;
 }
 
 .nd-header-right {
   font-size: 16px;
   font-weight: 600;
-  text-align: right;
-  white-space: nowrap;
 }
 
-/* TABLE GRID */
+/* TABLE GRID - The critical fix is here */
 .nd-row {
   display: grid;
-  /* Date, Time, Opponent (Expand), Site, Result */
-  grid-template-columns: 5ch 10ch 1fr 4ch 10ch;
+  /* Fixed widths for secondary data, 1fr for the opponent */
+  grid-template-columns: 50px 85px 1fr 35px 90px;
   column-gap: 8px;
   align-items: center;
   width: 100%;
@@ -53,19 +53,20 @@
   font-weight: 700;
   border-bottom: 2px solid #000;
   padding-bottom: 4px;
+  margin-bottom: 4px;
 }
 
-/* OPPONENT CELL - The Expansion Logic */
+/* OPPONENT CELL - Flex logic to allow internal shrinking */
 .opp {
   display: flex;
   align-items: center;
+  min-width: 0; /* Allows the container to shrink if needed */
   overflow: hidden;
-  width: 100%; /* Force use of the 1fr space */
 }
 
 .logo-sm {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   margin-right: 6px;
   flex-shrink: 0;
 }
@@ -75,32 +76,19 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1; /* This forces the text container to grow */
+  flex-grow: 1; /* Pushes against the other grid boundaries */
 }
 
-.nickname {
-  font-weight: 400;
-  font-size: 0.9em;
-}
+/* ALIGNMENT & COLORS */
+.site { text-align: center; font-weight: 600; }
+.result { text-align: right; font-weight: 600; }
 
-/* ALIGNMENT */
-.site, .col-site {
-  text-align: center;
-}
-
-.result, .col-res {
-  text-align: right;
-}
-
-.site-neutral {
+.site-neutral, .loss {
   color: #FF0000;
-  font-weight: 800;
 }
 
-.loss {
-  color: #FF0000;
-  font-weight: 700;
-}
+.rank { font-size: 0.85em; color: #444; margin-right: 2px; }
+.nickname { font-weight: 400; font-size: 0.9em; }
 
 /* FONT SIZE MODES */
 .font-small { font-size: 12px; }
