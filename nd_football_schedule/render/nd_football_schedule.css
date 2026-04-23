@@ -1,11 +1,8 @@
 /* Base Variables - Optimized for 7.3" (800x480) */
-/* Keeping these exactly as they were since they render well */
 :root {
   --container-padding: 12px;
-  --header-height: 48px;
   --header-font: 28px;
   --record-font: 18px;
-  --row-min-height: 32px;
   --row-gap: 6px;
   --column-gap: 12px;
   --font-normal: 18px;
@@ -18,54 +15,46 @@
   --col-res: 105px;
 }
 
-/* Massive Scaling - Strictly for 13.3" (1600x1200) */
+/* Scaling strictly for 13.3" (1600x1200) */
 @media (min-width: 801px) {
   :root {
-    --container-padding: 40px;
-    --header-height: 130px;
-    --header-font: 82px;  /* Significant jump for the 13.3" */
-    --record-font: 48px;
-    --row-min-height: 90px;
-    --row-gap: 28px;
-    --column-gap: 40px;
-    --font-normal: 48px;  
-    --logo-header: 130px;
-    --logo-sm: 60px;
-    /* Scaled Grid Columns for 1600px width */
-    --col-date: 150px;
-    --col-time: 260px;
-    --col-site: 220px;
-    --col-res: 260px;
-  }
-  
-  .nd-header {
-    border-bottom: 8px solid #000 !important; /* Thicker anchor for big screen */
-  }
-  
-  .nd-head {
-    border-bottom: 5px solid #000 !important;
-    letter-spacing: 2px;
+    --container-padding: 25px;
+    --header-font: 64px;  /* Large, but leaves room for rows */
+    --record-font: 36px;
+    --row-gap: 4px;       /* Tight gap to prevent vertical overflow */
+    --column-gap: 20px;
+    --font-normal: 38px;  /* Large row font */
+    --logo-header: 80px;
+    --logo-sm: 48px;      /* Large team logos */
+    /* Wider columns for the 1600px width */
+    --col-date: 130px;
+    --col-time: 220px;
+    --col-site: 180px;
+    --col-res: 240px;
   }
 }
 
 .nd-container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding: var(--container-padding);
   box-sizing: border-box;
   font-family: Roboto, Arial, sans-serif;
   font-size: var(--font-normal);
+  overflow: hidden; /* Prevent scrollbars on e-ink */
 }
 
+/* HEADER */
 .nd-header {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--container-padding);
+  margin-bottom: 10px;
   border-bottom: 4px solid #000;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .nd-header-left {
@@ -94,16 +83,16 @@
   grid-template-columns: var(--col-date) var(--col-time) 1fr var(--col-site) var(--col-res);
   column-gap: var(--column-gap);
   align-items: center;
-  min-height: var(--row-min-height);
   width: 100%;
   margin-bottom: var(--row-gap);
+  line-height: 1.1; /* Tighter line height for large fonts */
 }
 
 .nd-head {
   font-weight: 800;
-  border-bottom: 3px solid #000;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
   text-transform: uppercase;
 }
 
@@ -137,7 +126,7 @@
 .rank { font-size: 0.8em; color: #555; margin-right: 5px; }
 .nickname { font-weight: 400; font-size: 0.85em; opacity: 0.8; }
 
-/* InkyPi dynamic sizing overrides - these scale the units used above */
+/* InkyPi dynamic sizing overrides */
 .font-small { font-size: 0.85em; }
 .font-normal { font-size: 1em; }
-.font-large { font-size: 1.25em; }
+.font-large { font-size: 1.2em; }
