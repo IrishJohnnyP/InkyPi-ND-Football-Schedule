@@ -20,20 +20,15 @@
     <div class="date">Date</div>
     <div class="time">Time</div>
     <div class="opp">Opponent</div>
-    <div class="site">Site</div>
+    <div class="opp-record">Rec</div> <div class="site">Site</div>
     <div class="result">Result</div>
   </div>
 
   {% for game in games %}
   <div class="nd-row">
-    <div class="date">
-      {{ game.date[-5:] if game.date else "—" }}
-    </div>
-
-    <div class="time">
-      {{ game.time or "TBD" }}
-    </div>
-
+    <div class="date">{{ game.date[-5:] if game.date else "—" }}</div>
+    <div class="time">{{ game.time or "TBD" }}</div>
+    
     <div class="opp">
       {% if game.opponent.logo %}
         <img src="{{ game.opponent.logo }}" class="logo-sm">
@@ -45,14 +40,14 @@
       </div>
     </div>
 
+    <div class="opp-record">
+      {{ game.opponent.record or "—" }}
+    </div>
+
     <div class="site">
-      {% if game.homeAway == "neutral" %}
-        <span class="site-neutral">Neutral</span>
-      {% elif game.homeAway == "home" %}
-        Home
-      {% else %}
-        Away
-      {% endif %}
+      {% if game.homeAway == "neutral" %}<span class="site-neutral">Neutral</span>
+      {% elif game.homeAway == "home" %}Home
+      {% else %}Away{% endif %}
     </div>
 
     <div class="result {% if game.result and game.result.startswith('L') %}loss{% endif %}">
