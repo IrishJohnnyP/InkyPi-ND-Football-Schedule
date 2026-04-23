@@ -1,4 +1,4 @@
-/* Import Roboto Font */
+/* Import Roboto Font (Remote fallback) */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
 /* DEFAULT VARIABLES: Optimized for 13.3" (1600x1200) */
@@ -16,7 +16,7 @@
   --col-time: 260px;
   --col-site: 220px;
   --col-res: 280px;
-  --nickname-display: none; /* Hidden by default for big screen */
+  --nickname-display: none;
 }
 
 /* SCALING FOR 7.3" (800x480) */
@@ -35,7 +35,7 @@
     --col-time: 100px;
     --col-site: 85px;
     --col-res: 105px;
-    --nickname-display: inline; /* Restored for small screen */
+    --nickname-display: inline;
   }
 
   .nd-header {
@@ -45,15 +45,22 @@
   }
 }
 
-/* GLOBAL FONT AND OVERRIDE */
+/* THE ROBOTO FIX: 
+   Applying the font stack exactly like your Market Snapshot plugin
+*/
 .nd-container, 
-.nd-container *, 
+.nd-container * {
+  font-family: "Roboto", Arial, sans-serif !important;
+  color: #000;
+  box-sizing: border-box;
+  background-color: transparent !important;
+  line-height: 1.0 !important;
+}
+
+/* SPECIFIC FONT SIZE OVERRIDES */
 .nd-row div, 
 .school {
-  font-family: 'Roboto', sans-serif !important;
   font-size: var(--font-normal) !important;
-  line-height: 1.0 !important;
-  background-color: transparent !important; 
 }
 
 /* NICKNAME LOGIC */
@@ -88,7 +95,6 @@
   display: flex;
   flex-direction: column;
   padding: var(--container-padding-top) var(--container-padding-side) 5px var(--container-padding-side);
-  box-sizing: border-box;
   overflow: hidden;
 }
 
