@@ -1,6 +1,6 @@
 {
   "id": "nd_football_schedule",
-  "display_name": "ND Football Schedule",
+  "display_name": "ND Schedule",
   "class": "NDFootballSchedule",
   "version": "1.0.0",
   "description": "Displays the Notre Dame Fighting Irish football schedule.",
