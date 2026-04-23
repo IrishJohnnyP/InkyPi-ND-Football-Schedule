@@ -12,7 +12,7 @@
     </div>
     
     <div class="nd-header-right">
-      Final: {{ team.record }}
+      Record: {{ team.record }}
     </div>
   </div>
 
@@ -42,9 +42,7 @@
     </div>
 
     <div class="opp-record">
-      <span class="nd-rec-val">{{ game.ndRecord }}</span>
-      <span class="rec-vs">v</span>
-      <span class="opp-rec-val">{{ game.opponent.record }}</span>
+      {{ game.opponent.record or "—" }}
     </div>
 
     <div class="site">
