@@ -1,4 +1,5 @@
 /* Base Variables - Optimized for 7.3" (800x480) */
+/* These remain unchanged as you liked the 7.3" layout */
 :root {
   --container-padding: 12px;
   --header-font: 28px;
@@ -8,29 +9,39 @@
   --font-normal: 18px;
   --logo-header: 48px;
   --logo-sm: 24px;
-  /* Grid Columns */
   --col-date: 60px;
   --col-time: 105px;
   --col-site: 85px;
   --col-res: 105px;
 }
 
-/* Scaling strictly for 13.3" (1600x1200) */
+/* AGGRESSIVE SCALING for 13.3" (1600x1200) */
 @media (min-width: 801px) {
   :root {
-    --container-padding: 25px;
-    --header-font: 64px;  /* Large, but leaves room for rows */
-    --record-font: 36px;
-    --row-gap: 4px;       /* Tight gap to prevent vertical overflow */
+    --container-padding: 20px;
+    --header-font: 72px;  
+    --record-font: 38px;
+    --row-gap: 2px;       /* Near zero gap to fit all rows */
     --column-gap: 20px;
-    --font-normal: 38px;  /* Large row font */
-    --logo-header: 80px;
-    --logo-sm: 48px;      /* Large team logos */
-    /* Wider columns for the 1600px width */
-    --col-date: 130px;
-    --col-time: 220px;
-    --col-site: 180px;
-    --col-res: 240px;
+    --font-normal: 52px;  /* Substantially increased row font */
+    --logo-header: 90px;
+    --logo-sm: 64px;      /* Substantially increased row logos */
+    /* Widened columns for 1600px width */
+    --col-date: 140px;
+    --col-time: 240px;
+    --col-site: 200px;
+    --col-res: 260px;
+  }
+
+  .nd-header {
+    margin-bottom: 5px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .nd-head {
+    margin-bottom: 5px !important;
+    padding-bottom: 5px !important;
+    font-size: 0.8em; /* Slightly smaller headers to save vertical room */
   }
 }
 
@@ -43,10 +54,8 @@
   box-sizing: border-box;
   font-family: Roboto, Arial, sans-serif;
   font-size: var(--font-normal);
-  overflow: hidden; /* Prevent scrollbars on e-ink */
 }
 
-/* HEADER */
 .nd-header {
   display: flex;
   width: 100%;
@@ -85,7 +94,7 @@
   align-items: center;
   width: 100%;
   margin-bottom: var(--row-gap);
-  line-height: 1.1; /* Tighter line height for large fonts */
+  line-height: 1.0; /* Force tight vertical height */
 }
 
 .nd-head {
@@ -123,8 +132,8 @@
 .result { text-align: right; font-weight: 800; }
 .site-neutral { color: #FF0000; font-weight: 800; }
 .loss { color: #FF0000; }
-.rank { font-size: 0.8em; color: #555; margin-right: 5px; }
-.nickname { font-weight: 400; font-size: 0.85em; opacity: 0.8; }
+.rank { font-size: 0.7em; color: #555; margin-right: 5px; }
+.nickname { font-weight: 400; font-size: 0.8em; opacity: 0.8; }
 
 /* InkyPi dynamic sizing overrides */
 .font-small { font-size: 0.85em; }
