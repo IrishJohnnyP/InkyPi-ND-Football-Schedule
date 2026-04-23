@@ -20,8 +20,7 @@
     <div class="date">Date</div>
     <div class="time">Time</div>
     <div class="opp">Opponent</div>
-    <div class="opp-record">Rec</div>
-    <div class="site">Site</div>
+    <div class="opp-record">ND Rec</div> <div class="site">Site</div>
     <div class="result">Result</div>
   </div>
 
@@ -42,7 +41,7 @@
     </div>
 
     <div class="opp-record">
-      {{ game.opponent.ndrecord or "—" }}
+      {{ game.ndRecord or "—" }}
     </div>
 
     <div class="site">
