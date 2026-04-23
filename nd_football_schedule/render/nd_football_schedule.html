@@ -12,7 +12,7 @@
     </div>
     
     <div class="nd-header-right">
-      Record: {{ team.record }}
+      Final: {{ team.record }}
     </div>
   </div>
 
@@ -20,7 +20,8 @@
     <div class="date">Date</div>
     <div class="time">Time</div>
     <div class="opp">Opponent</div>
-    <div class="opp-record">Record</div> <div class="site">Site</div>
+    <div class="opp-record">Record</div>
+    <div class="site">Site</div>
     <div class="result">Result</div>
   </div>
 
@@ -41,7 +42,9 @@
     </div>
 
     <div class="opp-record">
-      {{ game.ndRecord or "—" }}
+      <span class="nd-rec-val">{{ game.ndRecord }}</span>
+      <span class="rec-vs">v</span>
+      <span class="opp-rec-val">{{ game.opponent.record }}</span>
     </div>
 
     <div class="site">
@@ -50,7 +53,7 @@
       {% else %}Away{% endif %}
     </div>
 
-    <div class="result {% if game.result and game.result.startswith('L') %}loss{% endif %}">
+    <div class="result {% if game.result and (game.result.startswith('L') or 'â€“' in game.result) %}loss{% endif %}">
       {{ game.result or "—" }}
     </div>
   </div>
