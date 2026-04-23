@@ -8,15 +8,16 @@
   --header-font: 84px;  
   --record-font: 42px;
   --row-gap: 8px;       
-  --column-gap: 15px;
+  --column-gap: 20px;
   --font-normal: 52px; 
   --logo-header: 100px; 
   --logo-sm: 64px;      
+  /* Grid Columns - 13.3" */
   --col-date: 140px;
   --col-time: 240px;
   --col-opp: 1fr;
-  --col-rec: 240px;     /* Increased to fit "0-0 v 0-0" */
-  --col-site: 180px;
+  --col-rec: 160px;     /* Shrunk back for single record */
+  --col-site: 200px;
   --col-res: 260px;
   --nickname-display: none;
 }
@@ -29,21 +30,21 @@
     --header-font: 28px; 
     --record-font: 18px;
     --row-gap: 5px;      
-    --column-gap: 6px;
+    --column-gap: 8px;
     --font-normal: 18px; 
     --logo-header: 44px; 
     --logo-sm: 24px;
     --col-date: 55px;
-    --col-time: 85px;
+    --col-time: 90px;
     --col-opp: 1fr;
-    --col-rec: 90px;    /* Increased for 7.3" */
-    --col-site: 65px;
+    --col-rec: 65px;    /* Shrunk back for 7.3" */
+    --col-site: 75px;
     --col-res: 95px;
     --nickname-display: inline;
   }
 }
 
-/* ROBOTO STACK */
+/* ROBOTO STACK & TRANSPARENCY */
 .nd-container, .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
   color: #000;
@@ -57,15 +58,8 @@
 /* RECORD COLUMN STYLING */
 .opp-record {
   text-align: center;
-  white-space: nowrap;
+  font-weight: 400; /* Keeps it distinct from the school name */
 }
-.rec-vs {
-  font-size: 0.6em !important;
-  opacity: 0.6;
-  margin: 0 4px;
-}
-.nd-rec-val { font-weight: 700; }
-.opp-rec-val { font-weight: 400; }
 
 /* LAYOUT STRUCTURE */
 .nd-row {
