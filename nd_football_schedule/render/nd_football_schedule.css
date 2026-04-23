@@ -8,15 +8,15 @@
   --header-font: 84px;  
   --record-font: 42px;
   --row-gap: 8px;       
-  --column-gap: 15px;   /* Slightly tighter gaps for 6 columns */
+  --column-gap: 15px;
   --font-normal: 52px; 
   --logo-header: 100px; 
   --logo-sm: 64px;      
   --col-date: 140px;
   --col-time: 240px;
   --col-opp: 1fr;
-  --col-rec: 180px;     
-  --col-site: 200px;
+  --col-rec: 240px;     /* Increased to fit "0-0 v 0-0" */
+  --col-site: 180px;
   --col-res: 260px;
   --nickname-display: none;
 }
@@ -36,16 +36,15 @@
     --col-date: 55px;
     --col-time: 85px;
     --col-opp: 1fr;
-    --col-rec: 60px;
-    --col-site: 70px;
+    --col-rec: 90px;    /* Increased for 7.3" */
+    --col-site: 65px;
     --col-res: 95px;
     --nickname-display: inline;
   }
 }
 
-/* THE ROBOTO FIX */
-.nd-container, 
-.nd-container * {
+/* ROBOTO STACK */
+.nd-container, .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
   color: #000;
   box-sizing: border-box;
@@ -53,10 +52,22 @@
   line-height: 1.0 !important;
 }
 
-.nd-row div, .school {
-  font-size: var(--font-normal) !important;
-}
+.nd-row div, .school { font-size: var(--font-normal) !important; }
 
+/* RECORD COLUMN STYLING */
+.opp-record {
+  text-align: center;
+  white-space: nowrap;
+}
+.rec-vs {
+  font-size: 0.6em !important;
+  opacity: 0.6;
+  margin: 0 4px;
+}
+.nd-rec-val { font-weight: 700; }
+.opp-rec-val { font-weight: 400; }
+
+/* LAYOUT STRUCTURE */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
@@ -64,11 +75,6 @@
   align-items: center;
   width: 100%;
   margin-bottom: var(--row-gap);
-}
-
-.opp-record {
-  text-align: center;
-  font-weight: 400;
 }
 
 /* Established Header & Row Styles */
