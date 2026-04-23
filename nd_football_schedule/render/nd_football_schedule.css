@@ -1,22 +1,59 @@
-/* Reset and Container */
+/* Base Variables - Optimized for 7.3" (800x480) */
+:root {
+  --container-padding: 10px;
+  --header-height: 48px;
+  --header-font: 28px;
+  --record-font: 18px;
+  --row-gap: 6px;
+  --column-gap: 12px;
+  --font-normal: 18px;
+  --logo-header: 48px;
+  --logo-sm: 24px;
+  /* Grid Columns */
+  --col-date: 60px;
+  --col-time: 105px;
+  --col-site: 85px;
+  --col-res: 105px;
+}
+
+/* Upscaling for 13.3" (1600x1200) */
+@media (min-width: 801px) {
+  :root {
+    --container-padding: 25px;
+    --header-height: 100px;
+    --header-font: 56px;
+    --record-font: 36px;
+    --row-gap: 15px;
+    --column-gap: 25px;
+    --font-normal: 36px;
+    --logo-header: 100px;
+    --logo-sm: 48px;
+    /* Scaled Grid Columns */
+    --col-date: 120px;
+    --col-time: 210px;
+    --col-site: 170px;
+    --col-res: 210px;
+  }
+}
+
 .nd-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 12px; /* Increased padding */
+  padding: var(--container-padding);
   box-sizing: border-box;
   font-family: Roboto, Arial, sans-serif;
+  font-size: var(--font-normal);
 }
 
-/* HEADER */
 .nd-header {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  border-bottom: 3px solid #000;
-  padding-bottom: 8px;
+  margin-bottom: var(--container-padding);
+  border-bottom: 4px solid #000;
+  padding-bottom: 10px;
 }
 
 .nd-header-left {
@@ -25,40 +62,37 @@
 }
 
 .nd-logo {
-  height: 48px; /* Increased size */
-  margin-right: 12px;
+  height: var(--logo-header);
+  margin-right: var(--column-gap);
 }
 
 .nd-name {
-  font-size: 28px; /* High emphasis for ND Title */
+  font-size: var(--header-font);
   font-weight: 800;
 }
 
 .nd-header-right {
-  font-size: 18px; /* Larger, but smaller than the Title */
+  font-size: var(--record-font);
   font-weight: 600;
 }
 
 /* TABLE GRID */
 .nd-row {
   display: grid;
-  /* Date (~60px), Time (~100px), Opponent (Flexible), Site (~80px), Result (~100px) */
-  grid-template-columns: 60px 105px 1fr 85px 105px;
-  column-gap: 12px;
+  grid-template-columns: var(--col-date) var(--col-time) 1fr var(--col-site) var(--col-res);
+  column-gap: var(--column-gap);
   align-items: center;
   width: 100%;
-  margin-bottom: 4px;
+  margin-bottom: var(--row-gap);
 }
 
 .nd-head {
   font-weight: 700;
   border-bottom: 2px solid #000;
-  padding-bottom: 6px;
-  margin-bottom: 8px;
-  font-size: 1.1em;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-/* OPPONENT CELL */
 .opp {
   display: flex;
   align-items: center;
@@ -67,9 +101,9 @@
 }
 
 .logo-sm {
-  width: 24px; /* Increased logo size */
-  height: 24px;
-  margin-right: 8px;
+  width: var(--logo-sm);
+  height: var(--logo-sm);
+  margin-right: 10px;
   flex-shrink: 0;
 }
 
@@ -81,37 +115,13 @@
   flex-grow: 1;
 }
 
-/* ALIGNMENT & COLORS */
-.site { 
-  text-align: center; 
-}
+.site { text-align: center; }
+.result { text-align: right; font-weight: 700; }
+.site-neutral, .loss { color: #FF0000; }
+.rank { font-size: 0.85em; color: #444; margin-right: 4px; }
+.nickname { font-weight: 400; font-size: 0.9em; }
 
-.result { 
-  text-align: right; 
-  font-weight: 700; 
-}
-
-.site-neutral {
-  color: #FF0000; /* Red for Neutral sites */
-  font-weight: 700;
-}
-
-.loss {
-  color: #FF0000;
-}
-
-.rank { 
-  font-size: 0.85em; 
-  color: #444; 
-  margin-right: 3px; 
-}
-
-.nickname { 
-  font-weight: 400; 
-  font-size: 0.9em; 
-}
-
-/* FONT SIZE MODES - Scaled up for extra room */
-.font-small { font-size: 16px; }
-.font-normal { font-size: 18px; }
-.font-large { font-size: 21px; }
+/* InkyPi dynamic sizing overrides */
+.font-small { font-size: 0.8em; }
+.font-normal { font-size: 1em; }
+.font-large { font-size: 1.2em; }
