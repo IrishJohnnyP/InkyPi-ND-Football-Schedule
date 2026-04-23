@@ -1,5 +1,4 @@
 /* Base Variables - Optimized for 7.3" (800x480) */
-/* These remain unchanged as you liked the 7.3" layout */
 :root {
   --container-padding: 12px;
   --header-font: 28px;
@@ -15,22 +14,32 @@
   --col-res: 105px;
 }
 
-/* AGGRESSIVE SCALING for 13.3" (1600x1200) */
+/* MASSIVE SCALING for 13.3" (1600x1200) */
 @media (min-width: 801px) {
   :root {
     --container-padding: 20px;
     --header-font: 72px;  
     --record-font: 38px;
-    --row-gap: 2px;       /* Near zero gap to fit all rows */
+    --row-gap: 4px;
     --column-gap: 20px;
-    --font-normal: 52px;  /* Substantially increased row font */
+    --font-normal: 52px;  /* The Target Size */
     --logo-header: 90px;
-    --logo-sm: 64px;      /* Substantially increased row logos */
-    /* Widened columns for 1600px width */
+    --logo-sm: 68px;      /* Huge Logos */
     --col-date: 140px;
     --col-time: 240px;
-    --col-site: 200px;
+    --col-site: 220px;
     --col-res: 260px;
+  }
+
+  /* FORCING THE ROW FONT INCREASE */
+  .nd-row div, 
+  .school, 
+  .date, 
+  .time, 
+  .site, 
+  .result {
+    font-size: var(--font-normal) !important;
+    line-height: 1.0 !important;
   }
 
   .nd-header {
@@ -38,10 +47,9 @@
     padding-bottom: 5px !important;
   }
 
-  .nd-head {
-    margin-bottom: 5px !important;
-    padding-bottom: 5px !important;
-    font-size: 0.8em; /* Slightly smaller headers to save vertical room */
+  .nd-head div {
+    font-size: 32px !important; /* Smaller than the data for contrast */
+    text-transform: uppercase;
   }
 }
 
@@ -94,7 +102,6 @@
   align-items: center;
   width: 100%;
   margin-bottom: var(--row-gap);
-  line-height: 1.0; /* Force tight vertical height */
 }
 
 .nd-head {
@@ -102,7 +109,6 @@
   border-bottom: 2px solid #000;
   padding-bottom: 4px;
   margin-bottom: 8px;
-  text-transform: uppercase;
 }
 
 .opp {
@@ -117,6 +123,7 @@
   height: var(--logo-sm);
   margin-right: 12px;
   flex-shrink: 0;
+  object-fit: contain;
 }
 
 .school {
