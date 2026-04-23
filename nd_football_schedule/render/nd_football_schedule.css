@@ -8,15 +8,14 @@
   --header-font: 84px;  
   --record-font: 42px;
   --row-gap: 8px;       
-  --column-gap: 20px;
+  --column-gap: 15px;   /* Slightly tighter gaps for 6 columns */
   --font-normal: 52px; 
   --logo-header: 100px; 
   --logo-sm: 64px;      
-  /* Grid Columns - 13.3" */
   --col-date: 140px;
   --col-time: 240px;
   --col-opp: 1fr;
-  --col-rec: 180px;     /* Room for "10-2" at 52px */
+  --col-rec: 180px;     
   --col-site: 200px;
   --col-res: 260px;
   --nickname-display: none;
@@ -30,20 +29,21 @@
     --header-font: 28px; 
     --record-font: 18px;
     --row-gap: 5px;      
-    --column-gap: 8px;
+    --column-gap: 6px;
     --font-normal: 18px; 
     --logo-header: 44px; 
     --logo-sm: 24px;
     --col-date: 55px;
-    --col-time: 90px;
+    --col-time: 85px;
     --col-opp: 1fr;
-    --col-rec: 65px;    /* Room for "10-2" at 18px */
-    --col-site: 75px;
+    --col-rec: 60px;
+    --col-site: 70px;
     --col-res: 95px;
     --nickname-display: inline;
   }
 }
 
+/* THE ROBOTO FIX */
 .nd-container, 
 .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
@@ -71,14 +71,14 @@
   font-weight: 400;
 }
 
-/* Rest of the established styles */
+/* Established Header & Row Styles */
 .nickname { display: var(--nickname-display) !important; font-weight: 400; font-size: 0.85em !important; opacity: 0.8; }
 .nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
 .nd-header-right { font-size: var(--record-font) !important; font-weight: 700 !important; }
-.nd-head div { font-size: calc(var(--font-normal) * 0.75) !important; font-weight: 700 !important; opacity: 0.8; padding-bottom: 2px; }
+.nd-head div { font-size: calc(var(--font-normal) * 0.7) !important; font-weight: 700 !important; opacity: 0.8; }
 .nd-container { width: 100%; height: 100%; display: flex; flex-direction: column; padding: var(--container-padding-top) var(--container-padding-side) 5px var(--container-padding-side); overflow: hidden; }
 .nd-header { display: flex; width: 100%; justify-content: space-between; align-items: center; margin-bottom: 5px; border-bottom: 6px solid #000; padding-bottom: 5px; }
-.nd-logo { height: var(--logo-header) !important; width: auto !important; margin-right: var(--column-gap); }
+.nd-logo { height: var(--logo-header) !important; width: auto !important; margin-right: 15px; }
 .nd-head { border-bottom: 3px solid #000; margin-bottom: 8px; }
 .opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
 .logo-sm { width: var(--logo-sm) !important; height: var(--logo-sm) !important; margin-right: 10px; flex-shrink: 0; }
