@@ -6,13 +6,13 @@
   font-family: Roboto, Arial, sans-serif;
 }
 
-/* HEADER - Single line with record pushed to the right */
+/* HEADER - Keeps everything on one line */
 .nd-header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Vertical alignment on one line */
+  align-items: center; 
   margin-bottom: 8px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid #000;
   padding-bottom: 4px;
 }
 
@@ -22,8 +22,8 @@
 }
 
 .nd-logo {
-  height: 40px; /* Slightly smaller to keep the line height tight */
-  margin-right: 12px;
+  height: 32px;
+  margin-right: 10px;
 }
 
 .nd-name {
@@ -32,7 +32,7 @@
   white-space: nowrap;
 }
 
-.nd-record-header {
+.nd-header-right {
   font-size: 16px;
   font-weight: 600;
   text-align: right;
@@ -42,29 +42,30 @@
 /* TABLE GRID */
 .nd-row {
   display: grid;
-  /* Opponent (3rd col) is 1fr to expand; Result (last col) is fixed to 10ch */
-  grid-template-columns: 6ch 10ch 1fr 4ch 10ch;
+  /* Date, Time, Opponent (Expand), Site, Result */
+  grid-template-columns: 5ch 10ch 1fr 4ch 10ch;
   column-gap: 8px;
   align-items: center;
+  width: 100%;
 }
 
 .nd-head {
   font-weight: 700;
-  border-bottom: 3px solid #000;
+  border-bottom: 2px solid #000;
   padding-bottom: 4px;
 }
 
-/* OPPONENT CELL */
+/* OPPONENT CELL - The Expansion Logic */
 .opp {
   display: flex;
   align-items: center;
   overflow: hidden;
-  min-width: 0; /* Important for flex-shrink/ellipsis to work */
+  width: 100%; /* Force use of the 1fr space */
 }
 
 .logo-sm {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   margin-right: 6px;
   flex-shrink: 0;
 }
@@ -74,14 +75,20 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1; /* This forces the text container to grow */
+}
+
+.nickname {
+  font-weight: 400;
+  font-size: 0.9em;
 }
 
 /* ALIGNMENT */
-.site, .site-head {
+.site, .col-site {
   text-align: center;
 }
 
-.result, .res-head {
+.result, .col-res {
   text-align: right;
 }
 
@@ -96,6 +103,6 @@
 }
 
 /* FONT SIZE MODES */
-.font-small { font-size: 14px; }
-.font-normal { font-size: 16px; }
-.font-large { font-size: 18px; }
+.font-small { font-size: 12px; }
+.font-normal { font-size: 14px; }
+.font-large { font-size: 16px; }
