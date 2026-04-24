@@ -1,7 +1,6 @@
 /* Import Roboto Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* 13.3" (1600x1200) */
 :root {
   --container-padding: 20px;
   --header-font: 84px;  
@@ -11,16 +10,15 @@
   --logo-sm: 64px;      
   --row-gap: 8px;
   
-  /* FIXED PX GRID for 1600px width */
-  --col-date: 160px;
-  --col-time: 260px;
+  /* REFINED GRID FOR 13.3" */
+  --col-date: 140px;
+  --col-time: 240px;
   --col-opp: 1fr;
-  --col-rec: 180px; 
-  --col-site: 200px;
-  --col-res: 280px;
+  --col-rec: 200px; 
+  --col-site: 180px;
+  --col-res: 260px;
 }
 
-/* 7.3" (800x480) */
 @media (max-width: 800px) {
   :root {
     --container-padding: 8px;
@@ -33,9 +31,9 @@
     --col-date: 60px;
     --col-time: 90px;
     --col-opp: 1fr;
-    --col-rec: 65px; 
+    --col-rec: 70px; 
     --col-site: 75px;
-    --col-res: 100px;
+    --col-res: 95px;
   }
 }
 
@@ -64,7 +62,10 @@
   margin-bottom: var(--row-gap);
 }
 
-.opp-record, .site { text-align: center; }
+.opp-record, .site { 
+  text-align: center; 
+}
+
 .result { text-align: right; }
 
 .date, .time, .school, .opp-record, .site, .result {
