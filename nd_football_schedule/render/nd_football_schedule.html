@@ -9,8 +9,8 @@
         <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" class="nd-logo" alt="ND">
       {% endif %}
       <span class="nd-name">Notre Dame Football {{ season }}</span>
+      <span class="nd-header-record">({{ team.record }})</span>
     </div>
-    <div class="nd-header-right">Final: {{ team.record }}</div>
   </div>
 
   <div class="nd-row nd-head">
@@ -34,12 +34,11 @@
       <div class="school">
         {% if game.opponent.rankAtGameTime %}<span class="rank">#{{ game.opponent.rankAtGameTime }}</span>{% endif %}
         {{ game.opponent.name }}
+        {% if game.opponent.mascot %}<span class="nickname">({{ game.opponent.mascot }})</span>{% endif %}
       </div>
     </div>
 
-    <div class="opp-record">
-      {{ game.opponentRecord or "—" }}
-    </div>
+    <div class="opp-record">{{ game.opponentRecord or "—" }}</div>
 
     <div class="site">
       {% if game.homeAway == "neutral" %}<span class="site-neutral">Neutral</span>
