@@ -8,15 +8,15 @@
   --header-font: 84px;  
   --record-font: 42px;
   --row-gap: 8px;       
-  --column-gap: 20px;
+  --column-gap: 15px;
   --font-normal: 52px; 
   --logo-header: 100px; 
   --logo-sm: 64px;      
   --col-date: 140px;
   --col-time: 240px;
   --col-opp: 1fr;
-  --col-rec: 160px;     
-  --col-site: 200px;
+  --col-rec: 160px;     /* Fixed width for opponent record */
+  --col-site: 180px;
   --col-res: 260px;
   --nickname-display: none;
 }
@@ -29,23 +29,22 @@
     --header-font: 28px; 
     --record-font: 18px;
     --row-gap: 5px;      
-    --column-gap: 8px;
+    --column-gap: 6px;
     --font-normal: 18px; 
     --logo-header: 44px; 
     --logo-sm: 24px;
     --col-date: 55px;
-    --col-time: 90px;
+    --col-time: 85px;
     --col-opp: 1fr;
-    --col-rec: 65px;    
-    --col-site: 75px;
+    --col-rec: 60px;
+    --col-site: 70px;
     --col-res: 95px;
     --nickname-display: inline;
   }
 }
 
-/* ROBOTO FONT STACK */
-.nd-container, 
-.nd-container * {
+/* ROBOTO STACK */
+.nd-container, .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
   color: #000;
   box-sizing: border-box;
@@ -53,10 +52,14 @@
   line-height: 1.0 !important;
 }
 
-.nd-row div, .school {
-  font-size: var(--font-normal) !important;
+.nd-row div, .school { font-size: var(--font-normal) !important; }
+
+/* RECORD COLUMN STYLING */
+.opp-record {
+  text-align: center;
 }
 
+/* LAYOUT STRUCTURE */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
@@ -66,15 +69,10 @@
   margin-bottom: var(--row-gap);
 }
 
-.opp-record {
-  text-align: center;
-  font-weight: 400;
-}
-
 .nickname { display: var(--nickname-display) !important; font-weight: 400; font-size: 0.85em !important; opacity: 0.8; }
 .nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
 .nd-header-right { font-size: var(--record-font) !important; font-weight: 700 !important; }
-.nd-head div { font-size: calc(var(--font-normal) * 0.75) !important; font-weight: 700 !important; opacity: 0.8; padding-bottom: 2px; }
+.nd-head div { font-size: calc(var(--font-normal) * 0.7) !important; font-weight: 700 !important; opacity: 0.8; }
 .nd-container { width: 100%; height: 100%; display: flex; flex-direction: column; padding: var(--container-padding-top) var(--container-padding-side) 5px var(--container-padding-side); overflow: hidden; }
 .nd-header { display: flex; width: 100%; justify-content: space-between; align-items: center; margin-bottom: 5px; border-bottom: 6px solid #000; padding-bottom: 5px; }
 .nd-logo { height: var(--logo-header) !important; width: auto !important; margin-right: 15px; }
