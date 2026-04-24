@@ -38,7 +38,7 @@
     </div>
 
     <div class="opp-record">
-      {{ game.opponent.record if game.opponent.record else "—" }}
+      {{ game.opponent.record | default('—', true) }}
     </div>
 
     <div class="site">
