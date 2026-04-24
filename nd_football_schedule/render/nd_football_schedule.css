@@ -43,7 +43,7 @@
   }
 }
 
-/* THE ROBOTO FIX */
+/* ROBOTO FONT STACK */
 .nd-container, 
 .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
@@ -57,7 +57,6 @@
   font-size: var(--font-normal) !important;
 }
 
-/* LAYOUT STRUCTURE */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
