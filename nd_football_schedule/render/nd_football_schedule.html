@@ -1,7 +1,7 @@
 {% extends "plugin.html" %}
 {% block content %}
 
-<div class="nd-container font-{{ plugin_settings.font_size | default('normal') }}">
+<div class="nd-container">
 
   <div class="nd-header">
     <div class="nd-header-left">
@@ -42,7 +42,7 @@
     </div>
 
     <div class="opp-record">
-      {{ game.opponent.record or "—" }}
+      {{ game.opponent.record if game.opponent.record else "—" }}
     </div>
 
     <div class="site">
@@ -51,7 +51,7 @@
       {% else %}Away{% endif %}
     </div>
 
-    <div class="result {% if game.result and (game.result.startswith('L') or '–' in game.result) %}loss{% endif %}">
+    <div class="result {% if game.result and ('L' in game.result) %}loss{% endif %}">
       {{ game.result or "—" }}
     </div>
   </div>
