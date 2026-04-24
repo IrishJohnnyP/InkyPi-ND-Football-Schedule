@@ -1,15 +1,16 @@
 /* Import Roboto Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* 13.3" (1600x1200) - Fine-tuned for Vertical Fit */
+/* 13.3" (1600x1200) - Fine-tuning for horizontal fit */
 :root {
   --container-padding: 20px;
   --header-font: 72px;  
   --header-rec-font: 42px;
   --font-normal: 54px;        
-  --logo-header: 75px;        /* Slightly reduced to accommodate row growth */
-  --logo-sm: 70px;            /* Increased as requested */
-  --row-gap: 4px;             /* Tightened further for the larger logos */
+  --font-meta: 42px;          /* Reduced font for Date/Time rows */
+  --logo-header: 75px; 
+  --logo-sm: 70px;            
+  --row-gap: 4px;             
   --col-date: 140px;
   --col-time: 240px;
   --col-opp: 1fr;
@@ -26,9 +27,10 @@
     --header-font: 26px; 
     --header-rec-font: 18px;
     --font-normal: 18px; 
+    --font-meta: 16px;         /* Reduced for small screen as well */
     --logo-header: 34px; 
-    --logo-sm: 28px;          /* Increased for 7.3" visibility */
-    --row-gap: 2px;           /* Minimum gap to fit all rows */
+    --logo-sm: 28px;          
+    --row-gap: 2px;           
     --col-date: 60px;
     --col-time: 90px;
     --col-opp: 1fr;
@@ -46,7 +48,7 @@
   box-sizing: border-box;
   background-color: transparent !important;
   line-height: 1.0 !important;
-  -webkit-font-smoothing: none; /* Sharpens Roboto on E-ink */
+  -webkit-font-smoothing: none; 
 }
 
 .nd-container {
@@ -67,36 +69,52 @@
 .nd-logo { height: var(--logo-header) !important; width: auto !important; }
 .nd-header-right { font-size: var(--header-rec-font) !important; font-weight: 900 !important; }
 
-/* THE GRID: Rows will auto-expand to fit --logo-sm */
+/* THE GRID */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
   width: 100%; align-items: center; margin-bottom: var(--row-gap);
 }
 
+/* 1) HEADER FONT FIX: Unified header sizes including "Opponent" */
+.nd-head div, 
+.nd-head .opp { 
+  font-size: calc(var(--font-normal) * 0.85) !important; 
+  font-weight: 900 !important; 
+}
+
+/* 2) DATE/TIME ROW SHRINK: Targets only the content rows */
+.nd-row:not(.nd-head) .date,
+.nd-row:not(.nd-head) .time {
+  font-size: var(--font-meta) !important;
+  font-weight: 400;
+}
+
+/* BASE FONT SIZES FOR ROWS */
+.school, .opp-record, .site, .result { 
+  font-size: var(--font-normal) !important; 
+}
+
 .opp-record, .site { text-align: center; }
 .result { text-align: right; }
-.date, .time, .school, .opp-record, .site, .result { font-size: var(--font-normal) !important; }
 
-.nd-head { border-bottom: 4px solid #000; margin-bottom: 4px; font-weight: 900; }
+.nd-head { border-bottom: 4px solid #000; margin-bottom: 4px; }
 .opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
 
-/* ROW LOGO: Larger size centered vertically */
 .logo-sm { 
   width: var(--logo-sm) !important; 
   height: var(--logo-sm) !important; 
   margin-right: 12px; 
   flex-shrink: 0; 
-  object-fit: contain;
 }
 
 .school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* NICKNAMES: Heavy weight for Spectra 6 ink saturation */
+/* NICKNAMES: Heavy saturation for Spectra 6 */
 .nickname {
   display: var(--nickname-display) !important;
   font-size: 0.85em !important;
-  font-weight: 900 !important; /* Maximum weight */
+  font-weight: 900 !important; 
   color: #000 !important;
   margin-left: 4px;
 }
