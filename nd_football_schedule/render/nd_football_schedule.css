@@ -41,7 +41,7 @@
   }
 }
 
-/* SPECTRA 6 HARDWARE OPTIMIZATION */
+/* HARDWARE OPTIMIZATION */
 .nd-container, .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
   color: #000 !important;
@@ -69,7 +69,7 @@
 .nd-logo { height: var(--logo-header) !important; width: auto !important; }
 .nd-header-right { font-size: var(--header-rec-font) !important; font-weight: 900 !important; }
 
-/* GRID SETUP */
+/* THE GRID */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
@@ -98,6 +98,11 @@
   font-size: var(--font-normal) !important; 
 }
 
+/* BOLD HOME SITE */
+.site strong {
+  font-weight: 900 !important;
+}
+
 .opp-record, .site { text-align: center; }
 .result { text-align: right; }
 
@@ -105,7 +110,6 @@
 .logo-sm { width: var(--logo-sm) !important; height: var(--logo-sm) !important; margin-right: 12px; flex-shrink: 0; }
 .school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* NICKNAMES: Heavy weight for Spectra 6 */
 .nickname {
   display: var(--nickname-display) !important;
   font-size: 0.85em !important;
@@ -114,6 +118,6 @@
   margin-left: 4px;
 }
 
-/* COLORS: Neutral sites will now naturally use #000 from the container-wide override */
+/* COLORS */
 .loss { color: #FF0000 !important; font-weight: 900; }
 .rank { font-size: 0.8em !important; color: #000 !important; font-weight: 900; margin-right: 5px; }
