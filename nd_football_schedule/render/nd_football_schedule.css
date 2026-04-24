@@ -3,7 +3,7 @@
 
 /* DEFAULT VARIABLES: Optimized for 13.3" (1600x1200) */
 :root {
-  --container-padding-top: 5px;
+  --container-padding-top: 2px;
   --container-padding-side: 20px;
   --header-font: 84px;  
   --record-font: 42px;
@@ -12,10 +12,11 @@
   --font-normal: 52px; 
   --logo-header: 100px; 
   --logo-sm: 64px;      
+  /* Grid Columns - 13.3" */
   --col-date: 140px;
   --col-time: 240px;
   --col-opp: 1fr;
-  --col-rec: 160px;     /* Fixed width for opponent record */
+  --col-rec: 180px;     /* Guaranteed width for record */
   --col-site: 180px;
   --col-res: 260px;
   --nickname-display: none;
@@ -36,15 +37,16 @@
     --col-date: 55px;
     --col-time: 85px;
     --col-opp: 1fr;
-    --col-rec: 60px;
+    --col-rec: 65px;    /* Guaranteed width for record */
     --col-site: 70px;
     --col-res: 95px;
     --nickname-display: inline;
   }
 }
 
-/* ROBOTO STACK */
-.nd-container, .nd-container * {
+/* THE ROBOTO FIX */
+.nd-container, 
+.nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
   color: #000;
   box-sizing: border-box;
@@ -52,14 +54,10 @@
   line-height: 1.0 !important;
 }
 
-.nd-row div, .school { font-size: var(--font-normal) !important; }
-
-/* RECORD COLUMN STYLING */
-.opp-record {
-  text-align: center;
+.nd-row div, .school {
+  font-size: var(--font-normal) !important;
 }
 
-/* LAYOUT STRUCTURE */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
@@ -69,6 +67,12 @@
   margin-bottom: var(--row-gap);
 }
 
+.opp-record {
+  text-align: center;
+  font-weight: 400; /* Distinct from bold school names */
+}
+
+/* Existing Styles */
 .nickname { display: var(--nickname-display) !important; font-weight: 400; font-size: 0.85em !important; opacity: 0.8; }
 .nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
 .nd-header-right { font-size: var(--record-font) !important; font-weight: 700 !important; }
