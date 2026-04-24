@@ -10,10 +10,7 @@
       {% endif %}
       <span class="nd-name">Notre Dame Football {{ season }}</span>
     </div>
-    
-    <div class="nd-header-right">
-      Record: {{ team.record }}
-    </div>
+    <div class="nd-header-right">Record: {{ team.record }}</div>
   </div>
 
   <div class="nd-row nd-head">
@@ -37,12 +34,11 @@
       <div class="school">
         {% if game.opponent.rank %}<span class="rank">#{{ game.opponent.rank }}</span>{% endif %}
         {{ game.opponent.name }}
-        {% if game.opponent.mascot %}<span class="nickname">({{ game.opponent.mascot }})</span>{% endif %}
       </div>
     </div>
 
     <div class="opp-record">
-      {{ game.opponent.record if game.opponent.record else "—" }}
+      {{ game['opponent']['record'] if game['opponent'] and game['opponent']['record'] else "—" }}
     </div>
 
     <div class="site">
