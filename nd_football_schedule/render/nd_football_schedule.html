@@ -8,7 +8,7 @@
       {% if team.id %}
         <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" class="nd-logo" alt="ND">
       {% endif %}
-      <span class="nd-name">{{ team.name }} Football {{ season }}</span>
+      <span class="nd-name">Notre Dame Football {{ season }}</span>
     </div>
     
     <div class="nd-header-right">
@@ -35,7 +35,7 @@
         <img src="{{ game.opponent.logo }}" class="logo-sm">
       {% endif %}
       <div class="school">
-        {% if game.opponent.rankAtGameTime %}<span class="rank">#{{ game.opponent.rankAtGameTime }}</span>{% endif %}
+        {% if game.opponent.rank %}<span class="rank">#{{ game.opponent.rank }}</span>{% endif %}
         {{ game.opponent.name }}
         {% if game.opponent.mascot %}<span class="nickname">({{ game.opponent.mascot }})</span>{% endif %}
       </div>
@@ -51,7 +51,7 @@
       {% else %}Away{% endif %}
     </div>
 
-    <div class="result {% if game.result and (game.result.startswith('L') or '—' in game.result) %}loss{% endif %}">
+    <div class="result {% if game.result and (game.result.startswith('L') or '–' in game.result) %}loss{% endif %}">
       {{ game.result or "—" }}
     </div>
   </div>
