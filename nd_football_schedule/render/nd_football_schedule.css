@@ -1,15 +1,15 @@
 /* Import Roboto Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* 13.3" (1600x1200) Optimization */
+/* 13.3" (1600x1200) - Fine-tuned for Vertical Fit */
 :root {
   --container-padding: 20px;
   --header-font: 72px;  
   --header-rec-font: 42px;
   --font-normal: 54px;        
-  --logo-header: 80px; 
-  --logo-sm: 64px;            /* Reduced to ensure 12th row fits */
-  --row-gap: 5px;             /* Tighter spacing for vertical fit */
+  --logo-header: 75px;        /* Slightly reduced to accommodate row growth */
+  --logo-sm: 70px;            /* Increased as requested */
+  --row-gap: 4px;             /* Tightened further for the larger logos */
   --col-date: 140px;
   --col-time: 240px;
   --col-opp: 1fr;
@@ -26,9 +26,9 @@
     --header-font: 26px; 
     --header-rec-font: 18px;
     --font-normal: 18px; 
-    --logo-header: 36px; 
-    --logo-sm: 24px;
-    --row-gap: 3px;
+    --logo-header: 34px; 
+    --logo-sm: 28px;          /* Increased for 7.3" visibility */
+    --row-gap: 2px;           /* Minimum gap to fit all rows */
     --col-date: 60px;
     --col-time: 90px;
     --col-opp: 1fr;
@@ -39,29 +39,27 @@
   }
 }
 
-/* SPECTRA 6 ENGINE TWEAKS */
+/* SPECTRA 6 HARDWARE OPTIMIZATION */
 .nd-container, .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
-  color: #000 !important;     /* Pure black to prevent dithering */
+  color: #000 !important;
   box-sizing: border-box;
   background-color: transparent !important;
   line-height: 1.0 !important;
-  -webkit-font-smoothing: none; /* Sharper edges on e-ink */
+  -webkit-font-smoothing: none; /* Sharpens Roboto on E-ink */
 }
 
 .nd-container {
   width: 100%; height: 100%; display: flex; flex-direction: column;
-  padding: 0px var(--container-padding) 2px var(--container-padding);
+  padding: 0px var(--container-padding) 1px var(--container-padding);
   overflow: hidden;
 }
 
 .nd-header {
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between;
-  border-bottom: 8px solid #000; /* Bold line for clear separation */
-  padding-bottom: 6px; 
-  margin-bottom: 6px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 8px solid #000; 
+  padding-bottom: 4px; 
+  margin-bottom: 4px;
 }
 
 .nd-header-left { display: flex; align-items: center; gap: 15px; }
@@ -69,6 +67,7 @@
 .nd-logo { height: var(--logo-header) !important; width: auto !important; }
 .nd-header-right { font-size: var(--header-rec-font) !important; font-weight: 900 !important; }
 
+/* THE GRID: Rows will auto-expand to fit --logo-sm */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
@@ -79,21 +78,30 @@
 .result { text-align: right; }
 .date, .time, .school, .opp-record, .site, .result { font-size: var(--font-normal) !important; }
 
-.nd-head { border-bottom: 4px solid #000; margin-bottom: 6px; font-weight: 900; }
+.nd-head { border-bottom: 4px solid #000; margin-bottom: 4px; font-weight: 900; }
 .opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
-.logo-sm { width: var(--logo-sm) !important; height: var(--logo-sm) !important; margin-right: 12px; flex-shrink: 0; }
+
+/* ROW LOGO: Larger size centered vertically */
+.logo-sm { 
+  width: var(--logo-sm) !important; 
+  height: var(--logo-sm) !important; 
+  margin-right: 12px; 
+  flex-shrink: 0; 
+  object-fit: contain;
+}
+
 .school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* NICKNAMES: Bolded for Spectra 6 Visibility */
+/* NICKNAMES: Heavy weight for Spectra 6 ink saturation */
 .nickname {
   display: var(--nickname-display) !important;
   font-size: 0.85em !important;
-  font-weight: 700 !important; /* Bolded as requested */
+  font-weight: 900 !important; /* Maximum weight */
   color: #000 !important;
   margin-left: 4px;
 }
 
-/* COLOR CONSTANTS */
+/* COLORS */
 .site-neutral { color: #FF0000 !important; font-weight: 900; }
 .loss { color: #FF0000 !important; font-weight: 900; }
-.rank { font-size: 0.8em !important; color: #000 !important; font-weight: 700; margin-right: 5px; }
+.rank { font-size: 0.8em !important; color: #000 !important; font-weight: 900; margin-right: 5px; }
