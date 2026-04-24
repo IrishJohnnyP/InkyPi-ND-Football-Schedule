@@ -1,7 +1,6 @@
 /* Import Roboto Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* 13.3" (1600x1200) Variables */
 :root {
   --container-padding-top: 2px;
   --container-padding-side: 20px;
@@ -13,17 +12,15 @@
   --logo-header: 100px; 
   --logo-sm: 64px;      
   
-  /* GRID COLUMN LOGIC */
-  --col-date: 140px;
-  --col-time: 240px;
-  --col-opp: 1fr;
-  --col-rec: minmax(160px, auto); /* FORCED MINIMUM WIDTH */
-  --col-site: 180px;
-  --col-res: 260px;
-  --nickname-display: none;
+  /* REFINED GRID - Using percentages for safety */
+  --col-date: 9%;
+  --col-time: 15%;
+  --col-opp: 36%;
+  --col-rec: 10%; 
+  --col-site: 12%;
+  --col-res: 18%;
 }
 
-/* 7.3" (800x480) Variables */
 @media (max-width: 800px) {
   :root {
     --container-padding-top: 2px; 
@@ -35,16 +32,15 @@
     --font-normal: 18px; 
     --logo-header: 44px; 
     --logo-sm: 24px;
-    --col-date: 55px;
+    --col-date: 60px;
     --col-time: 85px;
-    --col-rec: minmax(65px, auto); /* FORCED MINIMUM WIDTH */
+    --col-opp: 1fr;
+    --col-rec: 65px; 
     --col-site: 70px;
     --col-res: 95px;
-    --nickname-display: inline;
   }
 }
 
-/* GLOBAL STYLES */
 .nd-container, .nd-container * {
   font-family: "Roboto", Arial, sans-serif !important;
   color: #000;
@@ -65,9 +61,11 @@
 .opp-record {
   text-align: center;
   font-weight: 400;
+  min-width: 50px;
+  /* DEBUG: Remove the line below if it works */
+  border-left: 1px solid rgba(0,0,0,0.1); 
 }
 
-/* Existing Branding Styles */
 .nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
 .nd-header-right { font-size: var(--record-font) !important; font-weight: 700 !important; }
 .nd-container { width: 100%; height: 100%; display: flex; flex-direction: column; padding: var(--container-padding-top) var(--container-padding-side) 5px var(--container-padding-side); overflow: hidden; }
