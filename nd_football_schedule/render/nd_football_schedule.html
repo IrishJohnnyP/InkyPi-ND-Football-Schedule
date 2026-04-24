@@ -38,13 +38,7 @@
     </div>
 
     <div class="opp-record">
-      {% if game.opponent and game.opponent.record %}
-        {{ game.opponent.record }}
-      {% elif game.ndRecord %}
-        {{ game.ndRecord }}
-      {% else %}
-        —
-      {% endif %}
+      {{ game.opponent.record if game.opponent.record else "—" }}
     </div>
 
     <div class="site">
