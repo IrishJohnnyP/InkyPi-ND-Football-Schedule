@@ -23,6 +23,9 @@
   </div>
 
   {% for game in games %}
+    {# FORCE CAPTURE THE DATA #}
+    {% set opp_rec = game.opponent.record %}
+    
   <div class="nd-row">
     <div class="date">{{ game.date[-5:] if game.date else "—" }}</div>
     <div class="time">{{ game.time or "TBD" }}</div>
@@ -38,7 +41,7 @@
     </div>
 
     <div class="opp-record">
-      {{ game['opponent']['record'] if game['opponent'] and game['opponent']['record'] else "—" }}
+      {{ opp_rec if opp_rec else "—" }}
     </div>
 
     <div class="site">
