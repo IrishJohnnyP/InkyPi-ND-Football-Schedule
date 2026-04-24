@@ -44,7 +44,7 @@
     <div class="opp-record">{{ game.opponentRecord or "—" }}</div>
 
     <div class="site">
-      {% if game.homeAway == "neutral" %}<span class="site-neutral">Neutral</span>
+      {% if game.homeAway == "neutral" %}Neutral
       {% elif game.homeAway == "home" %}Home
       {% else %}Away{% endif %}
     </div>
