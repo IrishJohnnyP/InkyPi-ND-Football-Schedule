@@ -1,7 +1,7 @@
 /* Import Roboto Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* 13.3" (1600x1200) */
+/* 13.3" (1600x1200) Variables */
 :root {
   --container-padding: 20px;
   --header-font: 72px;  
@@ -20,7 +20,7 @@
   --nickname-display: none;
 }
 
-/* 7.3" (800x480) */
+/* 7.3" (800x480) Variables */
 @media (max-width: 800px) {
   :root {
     --container-padding: 8px;
@@ -69,18 +69,17 @@
 .nd-logo { height: var(--logo-header) !important; width: auto !important; }
 .nd-header-right { font-size: var(--header-rec-font) !important; font-weight: 900 !important; }
 
-/* THE GRID */
+/* GRID SETUP */
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
   width: 100%; align-items: center; margin-bottom: var(--row-gap);
 }
 
-/* TIGHTENED HEADER SPACING */
 .nd-head { 
   border-bottom: 4px solid #000; 
-  padding-bottom: 5px; /* Tightened from 10px */
-  margin-bottom: 5px;  /* Tightened from 8px */
+  padding-bottom: 5px; 
+  margin-bottom: 5px;  
 }
 
 .nd-head div, 
@@ -89,7 +88,6 @@
   font-weight: 900 !important; 
 }
 
-/* ROW DATA STYLES */
 .nd-row:not(.nd-head) .date,
 .nd-row:not(.nd-head) .time {
   font-size: var(--font-meta) !important;
@@ -107,7 +105,7 @@
 .logo-sm { width: var(--logo-sm) !important; height: var(--logo-sm) !important; margin-right: 12px; flex-shrink: 0; }
 .school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* NICKNAMES: Bolded for Spectra 6 */
+/* NICKNAMES: Heavy weight for Spectra 6 */
 .nickname {
   display: var(--nickname-display) !important;
   font-size: 0.85em !important;
@@ -116,7 +114,6 @@
   margin-left: 4px;
 }
 
-/* COLORS */
-.site-neutral { color: #FF0000 !important; font-weight: 900; }
+/* COLORS: Neutral sites will now naturally use #000 from the container-wide override */
 .loss { color: #FF0000 !important; font-weight: 900; }
 .rank { font-size: 0.8em !important; color: #000 !important; font-weight: 900; margin-right: 5px; }
