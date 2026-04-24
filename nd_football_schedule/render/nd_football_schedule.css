@@ -57,7 +57,6 @@
   overflow: hidden;
 }
 
-/* HEADER */
 .nd-header {
   display: flex; align-items: center; justify-content: space-between;
   border-bottom: 8px solid #000; 
@@ -77,11 +76,11 @@
   width: 100%; align-items: center; margin-bottom: var(--row-gap);
 }
 
-/* 1) HEADER SPACING FIX: Added padding-bottom to separate text from the line */
+/* TIGHTENED HEADER SPACING */
 .nd-head { 
   border-bottom: 4px solid #000; 
-  padding-bottom: 10px; /* Space between text and line */
-  margin-bottom: 8px;   /* Space between line and first game row */
+  padding-bottom: 5px; /* Tightened from 10px */
+  margin-bottom: 5px;  /* Tightened from 8px */
 }
 
 .nd-head div, 
@@ -108,7 +107,7 @@
 .logo-sm { width: var(--logo-sm) !important; height: var(--logo-sm) !important; margin-right: 12px; flex-shrink: 0; }
 .school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* NICKNAMES */
+/* NICKNAMES: Bolded for Spectra 6 */
 .nickname {
   display: var(--nickname-display) !important;
   font-size: 0.85em !important;
