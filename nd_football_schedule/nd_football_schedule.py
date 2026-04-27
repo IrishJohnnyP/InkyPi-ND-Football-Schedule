@@ -2,7 +2,7 @@ from plugins.base_plugin.base_plugin import BasePlugin
 from utils.http_client import get_http_session
 
 
-WORKER_URL = "https://nd-football-schedule.pietrowicz.workers.dev"
+WORKER_URL = "https://ndschedule.butternut.cloud"
 
 
 class NDFootballSchedule(BasePlugin):
