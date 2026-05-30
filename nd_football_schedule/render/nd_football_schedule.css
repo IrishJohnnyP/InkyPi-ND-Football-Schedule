@@ -91,7 +91,7 @@
 .nd-row:not(.nd-head) .date,
 .nd-row:not(.nd-head) .time {
   font-size: var(--font-meta) !important;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .school, .opp-record, .site, .result { 
