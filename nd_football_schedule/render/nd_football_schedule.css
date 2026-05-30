@@ -113,7 +113,7 @@
 .nickname {
   display: var(--nickname-display) !important;
   font-size: 0.85em !important;
-  font-weight: 900 !important; 
+  font-weight: 700 !important; 
   color: #000 !important;
   margin-left: 4px;
 }
