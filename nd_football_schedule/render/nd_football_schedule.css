@@ -48,7 +48,7 @@
   box-sizing: border-box;
   background-color: transparent !important;
   line-height: 1.0 !important;
-  -webkit-font-smoothing: none; 
+  text-rendering: optimizeLegibility; 
 }
 
 .nd-container {
