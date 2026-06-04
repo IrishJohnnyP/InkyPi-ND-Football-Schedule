@@ -49,11 +49,6 @@
   background-color: transparent !important;
   line-height: 1.0 !important;
   -webkit-font-smoothing: none; 
-  font-smooth: never;
-
-/* Prevent text scaling/blurring if the canvas scales */
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
 }
 
 .nd-container {
