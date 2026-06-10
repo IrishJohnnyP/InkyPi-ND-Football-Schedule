@@ -90,7 +90,7 @@
 
 .nd-row:not(.nd-head) .date,
 .nd-row:not(.nd-head) .time {
-  font-size: var(--font-normal) !important;
+  font-size: var(--font-meta) !important;
   font-weight: 700;
 }
 
