@@ -50,7 +50,7 @@
   line-height: 1.15 !important; 
   
   /* Crisp edges for e-ink rendering */
-  text-rendering: optimizeSpeed; 
+  text-rendering: auto; 
   -webkit-font-smoothing: none !important; 
   font-smoothing: none !important;
   font-variant-ligatures: none;
