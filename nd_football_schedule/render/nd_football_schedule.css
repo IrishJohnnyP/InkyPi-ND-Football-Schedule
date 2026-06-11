@@ -53,6 +53,7 @@
   text-rendering: optimizeSpeed; 
   -webkit-font-smoothing: none !important; 
   font-smoothing: none !important;
+  font-variant-ligatures: none;
 }
 
 .nd-container {
