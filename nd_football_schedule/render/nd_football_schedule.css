@@ -38,7 +38,7 @@
 
 /* HARDWARE OPTIMIZATION */
 .nd-container, .nd-container * {
-  /* InkyPi automatically discovers and injects the Jost font */
+  /* Default to built-in Jost */
   font-family: 'Jost', Arial, sans-serif !important;
   color: #000 !important;
   box-sizing: border-box;
@@ -77,14 +77,17 @@
 
 .nd-header-left { display: flex; align-items: center; gap: 15px; }
 
+/* OVERRIDE: Use custom JostBlack for headers */
 .nd-name { 
+  font-family: 'JostBlack', Arial, sans-serif !important;
   font-size: var(--header-font) !important; 
-  font-weight: 900 !important; 
+  font-weight: normal !important; 
 }
 
 .nd-header-right { 
+  font-family: 'JostBlack', Arial, sans-serif !important;
   font-size: var(--header-rec-font) !important; 
-  font-weight: 900 !important; 
+  font-weight: normal !important; 
 }
 
 /* THE GRID */
@@ -101,12 +104,15 @@
   padding-bottom: 5px; 
 }
 
+/* OVERRIDE: Use custom JostBlack for column headers */
 .nd-head div, 
 .nd-head .opp { 
+  font-family: 'JostBlack', Arial, sans-serif !important;
   font-size: calc(var(--font-normal) * 0.85) !important; 
-  font-weight: 900 !important; 
+  font-weight: normal !important; 
 }
 
+/* Base Built-in Bold for standard grid text */
 .nd-row:not(.nd-head) .date,
 .nd-row:not(.nd-head) .time {
   font-size: var(--font-meta) !important;
@@ -117,9 +123,10 @@
   font-size: var(--font-normal) !important; 
 }
 
-/* BOLD HOME SITE */
+/* OVERRIDE: Use custom JostBlack for bolded home site */
 .site strong {
-  font-weight: 900 !important;
+  font-family: 'JostBlack', Arial, sans-serif !important;
+  font-weight: normal !important;
 }
 
 .opp-record, .site { text-align: center; }
@@ -152,14 +159,28 @@
 
 .school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+/* OVERRIDE: Use custom JostMedium for nicknames */
 .nickname {
+  font-family: 'JostMedium', Arial, sans-serif !important;
   display: var(--nickname-display) !important;
   font-size: 0.85em !important;
-  font-weight: 500 !important; 
+  font-weight: normal !important; 
   color: #000 !important;
   margin-left: 4px;
 }
 
 /* COLORS */
-.loss { color: #FF0000 !important; font-weight: 900; }
-.rank { font-size: 0.8em !important; color: #000 !important; font-weight: 900; margin-right: 5px; }
+/* OVERRIDE: Use custom JostBlack for colors/ranks */
+.loss { 
+  font-family: 'JostBlack', Arial, sans-serif !important;
+  color: #FF0000 !important; 
+  font-weight: normal !important; 
+}
+
+.rank { 
+  font-family: 'JostBlack', Arial, sans-serif !important;
+  font-size: 0.8em !important; 
+  color: #000 !important; 
+  font-weight: normal !important; 
+  margin-right: 5px; 
+}
