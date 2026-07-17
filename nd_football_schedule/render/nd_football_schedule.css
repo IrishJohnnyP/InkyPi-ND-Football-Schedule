@@ -1,186 +1,161 @@
-/* 13.3" (1600x1200) Variables - Default State */
-:root {
-  --container-padding: 20px;
-  --header-font: 72px;  
-  --header-rec-font: 42px;
-  --font-normal: 54px;        
-  --font-meta: 42px;
-  --logo-header: 75px; 
-  --logo-sm: 70px;            
-  --col-date: 140px;
-  --col-time: 240px;
-  --col-opp: 1fr;
-  --col-rec: 180px; 
-  --col-site: 180px;
-  --col-res: 260px;
-  --nickname-display: none;
-}
+<style>
+  /* 1. BYPASS LOCAL FILES: Pull directly from Google */
+  @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700;900&display=swap');
 
-/* 7.3" (800x480) Variables - Mobile/Small Panel State */
-@media (max-width: 800px) {
+  /* 13.3" (1600x1200) Variables - Default State */
   :root {
-    --container-padding: 8px;
-    --header-font: 26px; 
-    --header-rec-font: 18px;
-    --font-normal: 18px; 
-    --font-meta: 16px;
-    --logo-header: 34px; 
-    --logo-sm: 28px;          
-    --col-date: 60px;
-    --col-time: 90px;
+    --container-padding: 20px;
+    --header-font: 72px;  
+    --header-rec-font: 42px;
+    --font-normal: 54px;        
+    --font-meta: 42px;
+    --logo-header: 75px; 
+    --logo-sm: 70px;            
+    --col-date: 140px;
+    --col-time: 240px;
     --col-opp: 1fr;
-    --col-rec: 65px; 
-    --col-site: 75px;
-    --col-res: 100px;
-    --nickname-display: inline;
+    --col-rec: 180px; 
+    --col-site: 180px;
+    --col-res: 260px;
+    --nickname-display: none;
   }
-}
 
-/* HARDWARE OPTIMIZATION */
-.nd-container, .nd-container * {
-  /* Default to built-in Jost */
-  font-family: 'Jost', Arial, sans-serif !important;
-  color: #000 !important;
-  box-sizing: border-box;
-  background-color: transparent !important;
-  
-  /* Increased to accommodate descenders (g, y, j, p, q) */
-  line-height: 1.15 !important; 
-  
-  /* Crisp edges for e-ink rendering */
-  text-rendering: auto; 
-  -webkit-font-smoothing: none !important; 
-  font-smoothing: none !important;
-  font-variant-ligatures: none;
-}
+  /* 7.3" (800x480) Variables - Mobile/Small Panel State */
+  @media (max-width: 800px) {
+    :root {
+      --container-padding: 8px;
+      --header-font: 26px; 
+      --header-rec-font: 18px;
+      --font-normal: 18px; 
+      --font-meta: 16px;
+      --logo-header: 34px; 
+      --logo-sm: 28px;          
+      --col-date: 60px;
+      --col-time: 90px;
+      --col-opp: 1fr;
+      --col-rec: 65px; 
+      --col-site: 75px;
+      --col-res: 100px;
+      --nickname-display: inline;
+    }
+  }
 
-.nd-container {
-  /* Fluid dimensions: Relies on Python/Headless browser setting the exact viewport size */
-  width: 100%; 
-  height: 100%; 
-  display: flex; 
-  flex-direction: column;
-  padding: 0px var(--container-padding) 1px var(--container-padding);
-  overflow: hidden;
-  
-  /* Flexbox layout perfectly distributes rows to avoid bottom clipping */
-  justify-content: space-between; 
-}
+  /* HARDWARE OPTIMIZATION */
+  .nd-container, .nd-container * {
+    font-family: 'Jost', Arial, sans-serif !important;
+    color: #000 !important;
+    box-sizing: border-box;
+    background-color: transparent !important;
+    line-height: 1.15 !important; 
+    text-rendering: auto; 
+    -webkit-font-smoothing: none !important; 
+    font-smoothing: none !important;
+    font-variant-ligatures: none;
+  }
 
-.nd-header {
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between;
-  border-bottom: 8px solid #000; 
-  padding-bottom: 4px; 
-}
+  .nd-container {
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column;
+    padding: 0px var(--container-padding) 1px var(--container-padding);
+    overflow: hidden;
+    justify-content: space-between; 
+  }
 
-.nd-header-left { display: flex; align-items: center; gap: 15px; }
+  .nd-header {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    border-bottom: 8px solid #000; 
+    padding-bottom: 4px; 
+  }
 
-/* OVERRIDE: Use custom JostBlack for headers */
-.nd-name { 
-  font-family: 'JostBlack', Arial, sans-serif !important;
-  font-size: var(--header-font) !important; 
-  font-weight: normal !important; 
-}
+  .nd-header-left { display: flex; align-items: center; gap: 15px; }
 
-.nd-header-right { 
-  font-family: 'JostBlack', Arial, sans-serif !important;
-  font-size: var(--header-rec-font) !important; 
-  font-weight: normal !important; 
-}
+  /* 900 WEIGHT APPLIED HERE */
+  .nd-name { 
+    font-size: var(--header-font) !important; 
+    font-weight: 900 !important; 
+  }
 
-/* THE GRID */
-.nd-row {
-  display: grid;
-  grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
-  width: 100%; 
-  align-items: center; 
-  /* margin-bottom removed; container flexbox now handles vertical spacing automatically */
-}
+  .nd-header-right { 
+    font-size: var(--header-rec-font) !important; 
+    font-weight: 900 !important; 
+  }
 
-.nd-head { 
-  border-bottom: 4px solid #000; 
-  padding-bottom: 5px; 
-}
+  /* THE GRID */
+  .nd-row {
+    display: grid;
+    grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
+    width: 100%; 
+    align-items: center; 
+  }
 
-/* OVERRIDE: Use custom JostBlack for column headers */
-.nd-head div, 
-.nd-head .opp { 
-  font-family: 'JostBlack', Arial, sans-serif !important;
-  font-size: calc(var(--font-normal) * 0.85) !important; 
-  font-weight: normal !important; 
-}
+  .nd-head { 
+    border-bottom: 4px solid #000; 
+    padding-bottom: 5px; 
+  }
 
-/* Base Built-in Bold for standard grid text */
-.nd-row:not(.nd-head) .date,
-.nd-row:not(.nd-head) .time {
-  font-size: var(--font-meta) !important;
-  font-weight: 700 !important;
-}
+  .nd-head div, 
+  .nd-head .opp { 
+    font-size: calc(var(--font-normal) * 0.85) !important; 
+    font-weight: 900 !important; 
+  }
 
-.school, .opp-record, .site, .result { 
-  font-size: var(--font-normal) !important; 
-}
+  .nd-row:not(.nd-head) .date,
+  .nd-row:not(.nd-head) .time {
+    font-size: var(--font-meta) !important;
+    font-weight: 700 !important;
+  }
 
-/* OVERRIDE: Use custom JostBlack for bolded home site */
-.site strong {
-  font-family: 'JostBlack', Arial, sans-serif !important;
-  font-weight: normal !important;
-}
+  .school, .opp-record, .site, .result { 
+    font-size: var(--font-normal) !important; 
+  }
 
-.opp-record, .site { text-align: center; }
-.result { text-align: right; }
+  .site strong {
+    font-weight: 900 !important;
+  }
 
-.opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
+  .opp-record, .site { text-align: center; }
+  .result { text-align: right; }
 
-/* LOGOS */
-.nd-logo { 
-  height: var(--logo-header) !important; 
-  width: auto !important; 
-  object-fit: contain; 
-  background-color: #f0e050 !important; /* Flat yellow prevents transparent dithering */
-  image-rendering: -webkit-optimize-contrast !important;
-  image-rendering: crisp-edges !important;
-  image-rendering: pixelated !important;
-}
+  .opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
 
-.logo-sm { 
-  width: var(--logo-sm) !important; 
-  height: var(--logo-sm) !important; 
-  margin-right: 12px; 
-  flex-shrink: 0; 
-  /* Prevents ESPN API logos from warping vertically */
-  object-fit: contain; 
-  image-rendering: -webkit-optimize-contrast !important;
-  image-rendering: crisp-edges !important;
-  image-rendering: pixelated !important;
-}
+  /* LOGOS */
+  .nd-logo { 
+    height: var(--logo-header) !important; 
+    width: auto !important; 
+    object-fit: contain; 
+    background-color: #f0e050 !important; 
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: crisp-edges !important;
+    image-rendering: pixelated !important;
+  }
 
-.school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .logo-sm { 
+    width: var(--logo-sm) !important; 
+    height: var(--logo-sm) !important; 
+    margin-right: 12px; 
+    flex-shrink: 0; 
+    object-fit: contain; 
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: crisp-edges !important;
+    image-rendering: pixelated !important;
+  }
 
-/* OVERRIDE: Use custom JostMedium for nicknames */
-.nickname {
-  font-family: 'JostMedium', Arial, sans-serif !important;
-  display: var(--nickname-display) !important;
-  font-size: 0.85em !important;
-  font-weight: normal !important; 
-  color: #000 !important;
-  margin-left: 4px;
-}
+  .school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* COLORS */
-/* OVERRIDE: Use custom JostBlack for colors/ranks */
-.loss { 
-  font-family: 'JostBlack', Arial, sans-serif !important;
-  color: #FF0000 !important; 
-  font-weight: normal !important; 
-}
+  /* 500 WEIGHT APPLIED HERE */
+  .nickname {
+    display: var(--nickname-display) !important;
+    font-size: 0.85em !important;
+    font-weight: 500 !important; 
+    color: #000 !important;
+    margin-left: 4px;
+  }
 
-.rank { 
-  font-family: 'JostBlack', Arial, sans-serif !important;
-  font-size: 0.8em !important; 
-  color: #000 !important; 
-  font-weight: normal !important; 
-  margin-right: 5px; 
-}
+  /* COLORS */
+  .loss { color: #FF0000 !important; font-weight: 900 !important; }
+  .rank { font-size: 0.8em !important; color: #000 !important; font-weight: 900 !important; margin-right: 5px; }
+</style>
