@@ -78,8 +78,8 @@
 }
 
 .nd-header-left { display: flex; align-items: center; gap: 15px; }
-.nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
-.nd-header-right { font-size: var(--header-rec-font) !important; font-weight: 900 !important; }
+.nd-name { font-size: var(--header-font) !important; font-weight: black !important; }
+.nd-header-right { font-size: var(--header-rec-font) !important; font-weight: black !important; }
 
 /* THE GRID */
 .nd-row {
@@ -98,13 +98,13 @@
 .nd-head div, 
 .nd-head .opp { 
   font-size: calc(var(--font-normal) * 0.85) !important; 
-  font-weight: 900 !important; 
+  font-weight: black !important; 
 }
 
 .nd-row:not(.nd-head) .date,
 .nd-row:not(.nd-head) .time {
   font-size: var(--font-meta) !important;
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .school, .opp-record, .site, .result { 
@@ -113,7 +113,7 @@
 
 /* BOLD HOME SITE */
 .site strong {
-  font-weight: 900 !important;
+  font-weight: black !important;
 }
 
 .opp-record, .site { text-align: center; }
@@ -144,17 +144,17 @@
   image-rendering: pixelated !important;
 }
 
-.school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.school { font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .nickname {
   display: var(--nickname-display) !important;
   font-size: 0.85em !important;
-  font-weight: 500 !important; 
+  font-weight: medium !important; 
   color: #000 !important;
   margin-left: 4px;
 }
 
 /* COLORS */
-.loss { color: #FF0000 !important; font-weight: 900; }
-.rank { font-size: 0.8em !important; color: #000 !important; font-weight: 900; margin-right: 5px; 
+.loss { color: #FF0000 !important; font-weight: black; }
+.rank { font-size: 0.8em !important; color: #000 !important; font-weight: black; margin-right: 5px; 
 }
