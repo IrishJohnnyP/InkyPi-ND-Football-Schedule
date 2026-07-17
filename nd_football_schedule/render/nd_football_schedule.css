@@ -78,7 +78,7 @@
 }
 
 .nd-header-left { display: flex; align-items: center; gap: 15px; }
-.nd-name { font-size: var(--header-font) !important; font-weight: black !important; }
+.nd-name { font-size: var(--header-font) !important; font-weight: extrabold !important; }
 .nd-header-right { font-size: var(--header-rec-font) !important; font-weight: black !important; }
 
 /* THE GRID */
