@@ -24,11 +24,11 @@
   :root {
     --container-padding: 8px;
     --header-font: 26px; 
-    --header-rec-font: 18px;
-    --font-normal: 18px; 
+    --header-rec-font: 24px;
+    --font-normal: 24px; 
     --font-meta: 16px;
     --logo-header: 34px; 
-    --logo-sm: 28px;          
+    --logo-sm: 30px;          
     --col-date: 60px;
     --col-time: 90px;
     --col-opp: 1fr;
