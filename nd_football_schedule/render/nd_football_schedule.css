@@ -38,7 +38,7 @@
     --nickname-display: inline;
   }
 
-  /* ✅ Thinner halo for the smaller 7.3" screen */
+  /* ✅ Thinner halo for the smaller 7.3" screen 
   .nd-container, .nd-container * {
     text-shadow: 
         -2px -2px 0 #FFFFFF,  
@@ -49,7 +49,7 @@
          2px  0px 0 #FFFFFF,
          0px -2px 0 #FFFFFF,
         -2px  0px 0 #FFFFFF !important;
-  }
+  } */
 }
 
 /* HARDWARE OPTIMIZATION */
@@ -68,7 +68,7 @@
   font-smoothing: none !important;
   font-variant-ligatures: none;
   
-  /* ✅ Thicker E-ink Halo Effect for the 13.3" screen base */
+  /* ✅ Thicker E-ink Halo Effect for the 13.3" screen base 
   text-shadow: 
       -4px -4px 0 #FFFFFF,  
        4px -4px 0 #FFFFFF,
@@ -77,7 +77,7 @@
        0px  4px 0 #FFFFFF,
        4px  0px 0 #FFFFFF,
        0px -4px 0 #FFFFFF,
-      -4px  0px 0 #FFFFFF !important;
+      -4px  0px 0 #FFFFFF !important; */
 }
 
 .nd-container {
