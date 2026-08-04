@@ -65,9 +65,18 @@
   padding: 0px var(--container-padding) 1px var(--container-padding);
   overflow: hidden;
   
-  /* Flexbox layout perfectly distributes rows to avoid bottom clipping */
+  /* ✅ Active Schedule: Flexbox layout perfectly distributes rows evenly from top to bottom */
+  justify-content: space-between; 
+}
+
+/* ✅ Empty Schedule: Safely pack elements at the top to prevent massive gaps */
+.nd-container.empty-schedule {
   justify-content: flex-start;
-  gap: 15px;
+}
+
+/* ✅ Empty Schedule: Add a clean gap right below the main bar so it doesn't look cramped */
+.nd-container.empty-schedule .nd-head {
+  margin-top: 25px;
 }
 
 .nd-header {
@@ -88,7 +97,6 @@
   grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
   width: 100%; 
   align-items: center; 
-  /* margin-bottom removed; container flexbox now handles vertical spacing automatically */
 }
 
 .nd-head { 
@@ -127,7 +135,6 @@
   height: var(--logo-header) !important; 
   width: auto !important; 
   object-fit: contain; 
-  /* background-color: #f0e050 !important;*/ /* Flat yellow prevents transparent dithering */
   image-rendering: -webkit-optimize-contrast !important;
   image-rendering: crisp-edges !important;
   image-rendering: pixelated !important;
@@ -138,7 +145,6 @@
   height: var(--logo-sm) !important; 
   margin-right: 12px; 
   flex-shrink: 0; 
-  /* Prevents ESPN API logos from warping vertically */
   object-fit: contain; 
   image-rendering: -webkit-optimize-contrast !important;
   image-rendering: crisp-edges !important;
