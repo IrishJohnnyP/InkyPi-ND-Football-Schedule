@@ -10,17 +10,29 @@ class NDFootballSchedule(BasePlugin):
         params["style_settings"] = True
         return params
 
-    def _fetch_schedule(self, season, tz_name):
+        def _fetch_schedule(self, season, tz_name):
         session = get_http_session()
 
         params = {}
         if season:
             params["season"] = season
         if tz_name:
-            params["tz"] = tz_name
+            params["tz"] = tz_name  
 
-        response = session.get(WORKER_URL, params=params, timeout=15)
-        response.raise_for_status()
+        # Spoof the Python User-Agent to bypass Cloudflare Bot Fight Mode
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+
+        response = session.get(WORKER_URL, params=params, headers=headers, timeout=15)
+        
+        try:
+            response.raise_for_status()
+        except Exception as e:
+            # This will print the actual error body to your logs
+            logger.error(f"Error Body: {response.text}")
+            raise e
+            
         return response.json()
 
     def generate_image(self, settings, device_config):
