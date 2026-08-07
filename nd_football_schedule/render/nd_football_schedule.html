@@ -1,7 +1,6 @@
 {% extends "plugin.html" %}
 {% block content %}
 
-<!-- ✅ The container dynamically adds the 'empty-schedule' class if the API returns 0 games -->
 <div class="nd-container {% if not games %}empty-schedule{% endif %}">
 
   <div class="nd-header">
@@ -9,7 +8,9 @@
       {% if team.id %}
         <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" class="nd-logo" alt="ND">
       {% endif %}
-      <span class="nd-name">Notre Dame Football {{ season }}</span>
+      <span class="nd-name">
+        {% if team.rank %}<span class="rank">#{{ team.rank }}</span>{% endif %}Notre Dame Football {{ season }}
+      </span>
     </div>
     
     <div class="nd-header-right">
