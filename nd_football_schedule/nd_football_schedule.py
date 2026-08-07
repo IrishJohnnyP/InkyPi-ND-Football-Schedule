@@ -21,13 +21,11 @@ class NDFootballSchedule(BasePlugin):
     def _fetch_schedule(self, season, tz_name):
         session = get_http_session()
 
-        # Construct the direct ESPN API URL using the season parameter
         espn_url = f"https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/87/schedule?season={season}"
         
-        # Spoof a modern browser User-Agent to bypass WAF filtering
         headers = {
             "Accept": "application/json",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            "User-Agent": "curl/8.20.0"
         }
         
         response = session.get(espn_url, headers=headers, timeout=15)
@@ -40,7 +38,6 @@ class NDFootballSchedule(BasePlugin):
             
         espn_data = response.json()
         
-        # Extract Notre Dame's overall season record
         team_record = "0-0"
         team_data = espn_data.get("team", {})
         if team_data.get("recordItems") and len(team_data["recordItems"]) > 0:
@@ -73,13 +70,11 @@ class NDFootballSchedule(BasePlugin):
             
             if comp_date:
                 game_date = comp_date[:10]
-                # ESPN marks timeValid as False for TBD games
                 if ev.get("timeValid") is not False:
                     try:
                         dt = datetime.fromisoformat(comp_date.replace("Z", "+00:00"))
                         if tz:
                             dt = dt.astimezone(tz)
-                        # Format to Local Time (e.g., 2:30 PM)
                         time_str = dt.strftime("%I:%M %p").lstrip("0")
                     except Exception:
                         pass
@@ -93,7 +88,6 @@ class NDFootballSchedule(BasePlugin):
             
             result = None
             if is_completed:
-                # Safely extract scores whether they arrive as dictionaries or raw strings
                 nd_score_str = str(nd.get("score", {}).get("value") if isinstance(nd.get("score"), dict) else nd.get("score") or "0")
                 opp_score_str = str(opp.get("score", {}).get("value") if isinstance(opp.get("score"), dict) else opp.get("score") or "0")
                 try:
@@ -146,7 +140,6 @@ class NDFootballSchedule(BasePlugin):
                 "result": result
             })
             
-        # Attempt to pull ND's current rank from their most recently scheduled game
         nd_rank = None
         if events:
             latest_comp = events[-1].get("competitions", [{}])[0]
@@ -159,7 +152,7 @@ class NDFootballSchedule(BasePlugin):
         return {
             "season": season,
             "timezone": tz_name,
-            "source": "ESPN API (Direct Python)",
+            "source": "ESPN API (Direct Python + curl UA)",
             "team": {
                 "id": 87,
                 "name": "Notre Dame",
@@ -175,14 +168,13 @@ class NDFootballSchedule(BasePlugin):
         if device_config.get_config("orientation") == "vertical":
             dimensions = dimensions[::-1]
 
-        # 1️⃣ Dynamically extract the timezone from the Raspberry Pi system configuration
         try:
             tz_name = device_config.get_config("timezone")
         except Exception:
             tz_name = None
             
         if not tz_name:
-            tz_name = "America/Chicago"  # Safe default fallback
+            tz_name = "America/Chicago"
 
         season = settings.get("season")
         if not season:
@@ -191,7 +183,6 @@ class NDFootballSchedule(BasePlugin):
             except Exception:
                 season = "2026"
         
-        # 2️⃣ Pass both the season and timezone into the fetch method
         data = self._fetch_schedule(season, tz_name)
 
         return self.render_image(
