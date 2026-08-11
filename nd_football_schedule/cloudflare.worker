@@ -1,0 +1,190 @@
+export default {
+  async fetch(request, env, ctx) {
+    const CACHE_VERSION = "v57";
+    const url = new URL(request.url);
+    const season = Number(url.searchParams.get("season") ?? "2026");
+    const tzParam = url.searchParams.get("tz") ?? "America/Chicago";
+
+    const cacheKey = new Request(
+      `https://ndschedule.butternut.cloud/internal-cache/${CACHE_VERSION}/season-${season}`,
+      request
+    );
+
+    const cache = caches.default;
+    const cached = await cache.match(cacheKey);
+    if (cached) return cached;
+
+    const apiKey = env.API_key;
+    const headers = {
+      "Accept": "application/json",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    };
+    if (apiKey) {
+      headers["Authorization"] = `Bearer ${apiKey}`;
+    }
+
+    const gamesUrl = `https://api.collegefootballdata.com/games?year=${season}&team=Notre%20Dame`;
+    const teamsUrl = `https://api.collegefootballdata.com/teams`;
+    const rankingsUrl = `https://api.collegefootballdata.com/rankings?year=${season}&seasonType=regular`;
+
+    let rawGames = [];
+    let teamMetaMap = {};
+    let rankMap = {};
+    let pollName = "AP Top 25";
+
+    try {
+      const [gamesRes, teamsRes, rankingsRes] = await Promise.all([
+        fetch(gamesUrl, { headers }),
+        fetch(teamsUrl, { headers }),
+        fetch(rankingsUrl, { headers })
+      ]);
+
+      if (gamesRes.ok) {
+        rawGames = await gamesRes.json();
+      } else {
+        const errText = await gamesRes.text();
+        return new Response(JSON.stringify({ error: `Games API error status ${gamesRes.status}: ${errText}` }, null, 2), {
+          status: gamesRes.status,
+          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+        });
+      }
+
+      if (teamsRes.ok) {
+        const teamsData = await teamsRes.json();
+        for (const t of teamsData) {
+          teamMetaMap[t.school] = {
+            mascot: t.mascot ?? "",
+            logo: t.logos?.[0] ?? null
+          };
+        }
+      }
+
+      if (rankingsRes.ok) {
+        const rankingsData = await rankingsRes.json();
+        if (Array.isArray(rankingsData) && rankingsData.length > 0) {
+          const latestWeek = rankingsData[rankingsData.length - 1];
+          const polls = latestWeek?.polls ?? [];
+
+          // Strict priority hierarchy: 1) CFP, 2) AP, 3) Coaches Poll
+          const targetPoll = 
+            polls.find(p => p.poll && (p.poll.toLowerCase().includes("playoff") || p.poll.toLowerCase().includes("cfp"))) ||
+            polls.find(p => p.poll && p.poll.toLowerCase().includes("ap")) ||
+            polls.find(p => p.poll && p.poll.toLowerCase().includes("coaches")) ||
+            polls[0] || 
+            { ranks: [] };
+
+          pollName = targetPoll.poll ?? "AP Top 25";
+          for (const r of (targetPoll.ranks || [])) {
+            if (r.school && r.rank) {
+              rankMap[r.school] = r.rank;
+            }
+          }
+        }
+      }
+    } catch (err) {
+      return new Response(JSON.stringify({ error: err.message }, null, 2), {
+        status: 500,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+      });
+    }
+
+    rawGames.sort((a, b) => new Date(a.startDate || 0) - new Date(b.startDate || 0));
+
+    const games = [];
+    let ndWins = 0;
+    let ndLosses = 0;
+
+    for (const [index, g] of rawGames.entries()) {
+      const isHome = g.homeTeam === "Notre Dame";
+      const oppName = isHome ? g.awayTeam : g.homeTeam;
+      const isCompleted = g.completed;
+      
+      let result = null;
+      if (isCompleted) {
+        const ndScore = isHome ? g.homePoints : g.awayPoints;
+        const oppScore = isHome ? g.awayPoints : g.homePoints;
+        result = ndScore > oppScore ? `W ${ndScore}–${oppScore}` : `L ${ndScore}–${oppScore}`;
+        if (ndScore > oppScore) ndWins++; else ndLosses++;
+      }
+
+      let time = null;
+      let gameDate = null;
+      
+      if (g.startDate) {
+        gameDate = g.startDate.slice(0, 10);
+        if (g.startTimeTBD !== true) {
+          try {
+            const dt = new Date(g.startDate);
+            if (!isNaN(dt)) {
+              time = new Intl.DateTimeFormat("en-US", {
+                timeZone: tzParam,
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              }).format(dt);
+            }
+          } catch {}
+        }
+      }
+
+      let homeAwayStatus = "neutral";
+      if (!g.neutralSite) {
+        homeAwayStatus = isHome ? "home" : "away";
+      }
+
+      const oppMeta = teamMetaMap[oppName] || { mascot: "", logo: null };
+      const oppRank = rankMap[oppName] ?? null;
+
+      games.push({
+        date: gameDate,
+        time,
+        week: g.week ?? (index + 1),
+        homeAway: homeAwayStatus,
+        opponentRecord: "0-0",
+        opponent: {
+          id: oppName ?? "TBD",
+          name: oppName ?? "TBD",
+          mascot: oppMeta.mascot,
+          logo: oppMeta.logo,
+          rank: oppRank,
+          rankAtGameTime: oppRank,
+          rankSource: pollName,
+          rankPoll: pollName,
+        },
+        ndRecord: `${ndWins}-${ndLosses}`,
+        result,
+      });
+    }
+
+    const ndRank = rankMap["Notre Dame"] ?? null;
+
+    const payload = {
+      _worker_version: CACHE_VERSION,
+      season,
+      timezone: tzParam,
+      generated_at: new Date().toISOString(),
+      team: {
+        id: 87,
+        name: "Notre Dame",
+        nickname: "Fighting Irish",
+        rank: ndRank,
+        record: `${ndWins}-${ndLosses}`,
+      },
+      games,
+    };
+
+    const response = new Response(
+      JSON.stringify(payload, null, 2),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "public, max-age=21600",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+
+    await cache.put(cacheKey, response.clone());
+    return response;
+  },
+};
