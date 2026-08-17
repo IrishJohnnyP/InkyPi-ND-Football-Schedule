@@ -23,18 +23,18 @@
 @media (max-width: 800px) {
   :root {
     --container-padding: 8px;
-    --header-font: 28px; 
-    --header-rec-font: 24px;
-    --font-normal: 24px; 
-    --font-meta: 20px;
-    --logo-header: 34px; 
-    --logo-sm: 30px;          
-    --col-date: 70px;
-    --col-time: 95px;
+    --header-font: 26px; 
+    --header-rec-font: 22px;
+    --font-normal: 21px; 
+    --font-meta: 18px;
+    --logo-header: 30px; 
+    --logo-sm: 24px;          
+    --col-date: 65px;
+    --col-time: 85px;
     --col-opp: 1fr;
     --col-rec: 75px; 
-    --col-site: 75px;
-    --col-res: 100px;
+    --col-site: 70px;
+    --col-res: 95px;
     --nickname-display: inline;
   }
 }
@@ -65,16 +65,16 @@
   padding: 0px var(--container-padding) 1px var(--container-padding);
   overflow: hidden;
   
-  /* ✅ Active Schedule: Flexbox layout perfectly distributes rows evenly from top to bottom */
+  /* Active Schedule: Flexbox layout perfectly distributes rows evenly from top to bottom */
   justify-content: space-between; 
 }
 
-/* ✅ Empty Schedule: Safely pack elements at the top to prevent massive gaps */
+/* Empty Schedule: Safely pack elements at the top to prevent massive gaps */
 .nd-container.empty-schedule {
   justify-content: flex-start;
 }
 
-/* ✅ Empty Schedule: Add a clean gap right below the main bar so it doesn't look cramped */
+/* Empty Schedule: Add a clean gap right below the main bar so it doesn't look cramped */
 .nd-container.empty-schedule .nd-head {
   margin-top: 25px;
 }
@@ -170,4 +170,11 @@
 .nd-row:not(.nd-head):not(:last-child) {
   border-bottom: 2px solid #000;
   padding-bottom: 8px;
+}
+
+/* Tighter spacing for the small screen */
+@media (max-width: 800px) {
+  .nd-row:not(.nd-head):not(:last-child) {
+    padding-bottom: 3px; 
+  }
 }
