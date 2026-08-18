@@ -11,7 +11,7 @@ class NDFootballSchedule(BasePlugin):
         params["style_settings"] = True
         return params
 
-    def _fetch_schedule(self, season, tz_name):
+    def _fetch_schedule(self, season, tz_name, device_config):
         session = get_http_session()
 
         params = {}
@@ -19,6 +19,13 @@ class NDFootballSchedule(BasePlugin):
             params["season"] = season
         if tz_name:
             params["tz"] = tz_name
+
+        # --- SECURITY FIX ---
+        # Retrieve the app_key from InkyPi's environment and include it in query params
+        app_key = device_config.load_env_key("app_key")
+        if app_key:
+            params["app_key"] = app_key
+        # --------------------
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
@@ -43,7 +50,7 @@ class NDFootballSchedule(BasePlugin):
 
         season = settings.get("season") or ""
         
-        data = self._fetch_schedule(season, tz_name)
+        data = self._fetch_schedule(season, tz_name, device_config)
 
         return self.render_image(
             dimensions,
