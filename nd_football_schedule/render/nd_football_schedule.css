@@ -155,7 +155,7 @@
 
 .nickname {
   display: var(--nickname-display) !important;
-  font-size: 0.85em !important;
+  font-size: 1.0em !important;
   font-weight: 500 !important; 
   color: #000 !important;
   margin-left: 4px;
