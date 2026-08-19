@@ -163,7 +163,7 @@
 
 /* COLORS */
 .loss { color: #FF0000 !important; font-weight: 900; }
-.rank { font-size: 0.8em !important; color: #000 !important; font-weight: 900; margin-right: 5px; 
+.rank { font-size: 1.0em !important; color: #000 !important; font-weight: 700; margin-right: 5px; 
 }
 
 /* Adds a dividing line between games, skipping the header and the last game */
