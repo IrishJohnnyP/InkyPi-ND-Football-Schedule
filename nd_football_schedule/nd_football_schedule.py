@@ -3,7 +3,6 @@ from utils.http_client import get_http_session
 
 WORKER_URL = "https://ndschedule.butternut.cloud"
 
-
 class NDFootballSchedule(BasePlugin):
 
     def generate_settings_template(self):
@@ -40,13 +39,16 @@ class NDFootballSchedule(BasePlugin):
         if device_config.get_config("orientation") == "vertical":
             dimensions = dimensions[::-1]
 
+        # --- TIMEZONE FIX ---
         try:
             tz_name = device_config.get_config("timezone")
         except Exception:
             tz_name = None
             
         if not tz_name:
-            tz_name = "America/Chicago"
+            # Defaulting to Eastern Time to match the worker
+            tz_name = "America/New_York" 
+        # --------------------
 
         season = settings.get("season") or ""
         
