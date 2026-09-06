@@ -5,8 +5,8 @@
 
   <div class="nd-header">
     <div class="nd-header-left">
-      {% if team.id %}
-        <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/{{ team.id }}.png" class="nd-logo" alt="ND">
+      {% if team.logo %}
+        <img src="{{ team.logo }}" class="nd-logo" alt="ND">
       {% endif %}
       <span class="nd-name">
         {% if team.rank %}<span class="rank">#{{ team.rank }}</span>{% endif %}Notre Dame Football {{ season }}
