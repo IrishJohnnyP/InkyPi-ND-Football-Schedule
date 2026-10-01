@@ -26,18 +26,29 @@
 @media (max-width: 800px) {
   :root {
     --container-padding: 8px;
-    --header-font: 26px; 
-    --header-rec-font: 22px;
-    --font-normal: 21px; 
-    --font-meta: 18px;
-    --logo-header: 30px; 
-    --logo-sm: 24px;          
+    --header-font: 24px; /* Reduced from 26 */
+    --header-rec-font: 20px; /* Reduced from 22 */
+    --font-normal: 19px; /* Reduced from 21 */
+    --font-meta: 16px; /* Reduced from 18 */
+    --logo-header: 28px; /* Reduced from 30 */
+    --logo-sm: 22px; /* Reduced from 24 */
     --col-datetime: 75px; 
-    --col-opp: 1fr; /* This automatically shrinks when --col-res increases */
+    --col-opp: 1fr; 
     --col-rec: 75px; 
-    --col-site: 70px;
-    --col-res: 125px; /* Increased from 95px to give the Result column more room */
+    --col-site: 65px; /* Shaved 5px to give room */
+    --col-res: 125px; 
     --nickname-display: inline;
+  }
+
+  /* Thin out the thick header borders on the small screen to save vertical space */
+  .nd-header {
+    border-bottom: 4px solid #000 !important;
+    padding-bottom: 2px !important;
+  }
+  
+  .nd-head {
+    border-bottom: 2px solid #000 !important;
+    padding-bottom: 2px !important;
   }
 }
 
@@ -199,6 +210,7 @@
 /* Tighter spacing for the small screen */
 @media (max-width: 800px) {
   .nd-row:not(.nd-head):not(:last-child) {
-    padding-bottom: 3px; 
+    padding-bottom: 2px; 
+    border-bottom: 1px solid #000; /* Thinning the row dividers slightly to save vertical space */
   }
 }
