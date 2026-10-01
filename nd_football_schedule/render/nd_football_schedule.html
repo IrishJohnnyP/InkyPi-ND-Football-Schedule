@@ -29,7 +29,7 @@
   {% for game in games %}
   <div class="nd-row">
     
-    <!-- Combined Date and Time Column (Moved back to the left) -->
+    <!-- Combined Date and Time Column -->
     <div class="datetime">
       <div class="dt-date">{{ game.date[-5:].replace('-', '/') if game.date else "—" }}</div>
       <div class="dt-time">{{ game.time or "TBD" }}</div>
