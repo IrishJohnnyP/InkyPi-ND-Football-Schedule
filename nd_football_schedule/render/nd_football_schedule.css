@@ -19,7 +19,7 @@
   --col-rec: 180px; 
   --col-site: 180px;
   --col-res: 260px;
-  --nickname-display: inline; /* Changed from none to inline to show on large display */
+  --nickname-display: inline; /* Shows on large display */
 }
 
 /* 7.3" (800x480) Variables - Mobile/Small Panel State */
@@ -100,8 +100,8 @@
 /* THE GRID */
 .nd-row {
   display: grid;
-  /* Updated grid template columns to place datetime on the far right */
-  grid-template-columns: var(--col-opp) var(--col-rec) var(--col-site) var(--col-res) var(--col-datetime);
+  /* Reverted grid template columns to place datetime on the far left */
+  grid-template-columns: var(--col-datetime) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
   width: 100%; 
   align-items: center; 
 }
@@ -152,8 +152,7 @@
 }
 
 .opp-record, .site { text-align: center; }
-/* Push the result text a little to the right, but maybe center it now that time is on the edge? Left it right-aligned but can change to center if desired. */
-.result { text-align: right; padding-right: 25px; }
+.result { text-align: right; } /* Removed the extra right padding from the previous step */
 
 .opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
 
