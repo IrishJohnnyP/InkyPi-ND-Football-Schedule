@@ -211,6 +211,6 @@
 @media (max-width: 800px) {
   .nd-row:not(.nd-head):not(:last-child) {
     padding-bottom: 2px; 
-    border-bottom: 1px solid #000; /* Thinning the row dividers slightly to save vertical space */
+    border-bottom: 2px solid #000; /* Thinning the row dividers slightly to save vertical space */
   }
 }
