@@ -14,12 +14,12 @@
   --font-meta: 42px;
   --logo-header: 75px; 
   --logo-sm: 70px;            
-  --col-datetime: 260px; /* Combined Date & Time column */
+  --col-datetime: 240px; 
   --col-opp: 1fr;
   --col-rec: 180px; 
   --col-site: 180px;
   --col-res: 260px;
-  --nickname-display: none;
+  --nickname-display: inline; /* Changed from none to inline to show on large display */
 }
 
 /* 7.3" (800x480) Variables - Mobile/Small Panel State */
@@ -32,7 +32,7 @@
     --font-meta: 18px;
     --logo-header: 30px; 
     --logo-sm: 24px;          
-    --col-datetime: 110px; /* Combined Date & Time column */
+    --col-datetime: 110px; 
     --col-opp: 1fr;
     --col-rec: 75px; 
     --col-site: 70px;
@@ -100,7 +100,8 @@
 /* THE GRID */
 .nd-row {
   display: grid;
-  grid-template-columns: var(--col-datetime) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
+  /* Updated grid template columns to place datetime on the far right */
+  grid-template-columns: var(--col-opp) var(--col-rec) var(--col-site) var(--col-res) var(--col-datetime);
   width: 100%; 
   align-items: center; 
 }
@@ -130,13 +131,14 @@
 }
 
 .dt-date {
-  font-size: var(--font-meta) !important;
+  /* Reduced size to prevent pushing rows off the bottom of the screen */
+  font-size: calc(var(--font-meta) * 0.80) !important;
   font-weight: 900;
 }
 
 .dt-time {
   /* Make time slightly smaller to create a clean visual hierarchy beneath the date */
-  font-size: calc(var(--font-meta) * 0.75) !important;
+  font-size: calc(var(--font-meta) * 0.65) !important;
   font-weight: 700;
 }
 
@@ -150,7 +152,8 @@
 }
 
 .opp-record, .site { text-align: center; }
-.result { text-align: right; }
+/* Push the result text a little to the right, but maybe center it now that time is on the edge? Left it right-aligned but can change to center if desired. */
+.result { text-align: right; padding-right: 25px; }
 
 .opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
 
@@ -193,7 +196,7 @@
 /* Adds a dividing line between games, skipping the header and the last game */
 .nd-row:not(.nd-head):not(:last-child) {
   border-bottom: 2px solid #000;
-  padding-bottom: 8px;
+  padding-bottom: 6px; /* Slightly reduced padding to help fit the screen better */
 }
 
 /* Tighter spacing for the small screen */
