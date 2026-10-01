@@ -14,12 +14,12 @@
   --font-meta: 42px;
   --logo-header: 75px; 
   --logo-sm: 70px;            
-  --col-datetime: 140px; /* Reduced width to give more space to the opponent */
+  --col-datetime: 140px; 
   --col-opp: 1fr;
   --col-rec: 180px; 
   --col-site: 180px;
   --col-res: 260px;
-  --nickname-display: inline; /* Shows on large display */
+  --nickname-display: inline;
 }
 
 /* 7.3" (800x480) Variables - Mobile/Small Panel State */
@@ -32,11 +32,11 @@
     --font-meta: 18px;
     --logo-header: 30px; 
     --logo-sm: 24px;          
-    --col-datetime: 75px; /* Reduced width to give more space to the opponent */
-    --col-opp: 1fr;
+    --col-datetime: 75px; 
+    --col-opp: 1fr; /* This automatically shrinks when --col-res increases */
     --col-rec: 75px; 
     --col-site: 70px;
-    --col-res: 95px;
+    --col-res: 125px; /* Increased from 95px to give the Result column more room */
     --nickname-display: inline;
   }
 }
@@ -118,16 +118,16 @@
 
 /* COMBINED DATE & TIME STYLES */
 .datetime { 
-  text-align: left; /* Changed from center to left */
+  text-align: left; 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; /* Aligns the stacked date and time to the left edge */
+  align-items: flex-start;
 }
 
 .nd-head .datetime {
   display: block; 
-  text-align: left; /* Ensures the "Time" header is also left aligned */
+  text-align: left;
 }
 
 .dt-date {
