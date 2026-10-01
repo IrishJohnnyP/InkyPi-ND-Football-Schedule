@@ -14,7 +14,7 @@
   --font-meta: 42px;
   --logo-header: 75px; 
   --logo-sm: 70px;            
-  --col-datetime: 240px; 
+  --col-datetime: 140px; /* Reduced width to give more space to the opponent */
   --col-opp: 1fr;
   --col-rec: 180px; 
   --col-site: 180px;
@@ -32,7 +32,7 @@
     --font-meta: 18px;
     --logo-header: 30px; 
     --logo-sm: 24px;          
-    --col-datetime: 110px; 
+    --col-datetime: 75px; /* Reduced width to give more space to the opponent */
     --col-opp: 1fr;
     --col-rec: 75px; 
     --col-site: 70px;
@@ -100,7 +100,6 @@
 /* THE GRID */
 .nd-row {
   display: grid;
-  /* Reverted grid template columns to place datetime on the far left */
   grid-template-columns: var(--col-datetime) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
   width: 100%; 
   align-items: center; 
@@ -119,25 +118,24 @@
 
 /* COMBINED DATE & TIME STYLES */
 .datetime { 
-  text-align: center;
+  text-align: left; /* Changed from center to left */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Aligns the stacked date and time to the left edge */
 }
 
 .nd-head .datetime {
-  display: block; /* Keeps the header as a simple block rather than a stacked flex column */
+  display: block; 
+  text-align: left; /* Ensures the "Time" header is also left aligned */
 }
 
 .dt-date {
-  /* Reduced size to prevent pushing rows off the bottom of the screen */
   font-size: calc(var(--font-meta) * 0.80) !important;
   font-weight: 900;
 }
 
 .dt-time {
-  /* Make time slightly smaller to create a clean visual hierarchy beneath the date */
   font-size: calc(var(--font-meta) * 0.65) !important;
   font-weight: 700;
 }
@@ -152,7 +150,7 @@
 }
 
 .opp-record, .site { text-align: center; }
-.result { text-align: right; } /* Removed the extra right padding from the previous step */
+.result { text-align: right; }
 
 .opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
 
@@ -195,7 +193,7 @@
 /* Adds a dividing line between games, skipping the header and the last game */
 .nd-row:not(.nd-head):not(:last-child) {
   border-bottom: 2px solid #000;
-  padding-bottom: 6px; /* Slightly reduced padding to help fit the screen better */
+  padding-bottom: 6px;
 }
 
 /* Tighter spacing for the small screen */
