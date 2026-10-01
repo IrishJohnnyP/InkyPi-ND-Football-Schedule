@@ -19,15 +19,21 @@
   </div>
 
   <div class="nd-row nd-head">
+    <div class="datetime">Time</div>
     <div class="opp">Opponent</div>
     <div class="opp-record">Record</div>
     <div class="site">Site</div>
     <div class="result">Result</div>
-    <div class="datetime">Time</div>
   </div>
 
   {% for game in games %}
   <div class="nd-row">
+    
+    <!-- Combined Date and Time Column (Moved back to the left) -->
+    <div class="datetime">
+      <div class="dt-date">{{ game.date[-5:].replace('-', '/') if game.date else "—" }}</div>
+      <div class="dt-time">{{ game.time or "TBD" }}</div>
+    </div>
     
     <div class="opp">
       {% if game.opponent.logo %}
@@ -50,12 +56,6 @@
 
     <div class="result {% if game.result and ('L' in game.result) %}loss{% endif %}">
       {{ game.result or "—" }}
-    </div>
-
-    <!-- Combined Date and Time Column Moved to the Right -->
-    <div class="datetime">
-      <div class="dt-date">{{ game.date[-5:].replace('-', '/') if game.date else "—" }}</div>
-      <div class="dt-time">{{ game.time or "TBD" }}</div>
     </div>
 
   </div>
