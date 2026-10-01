@@ -14,8 +14,7 @@
   --font-meta: 42px;
   --logo-header: 75px; 
   --logo-sm: 70px;            
-  --col-date: 140px;
-  --col-time: 240px;
+  --col-datetime: 260px; /* Combined Date & Time column */
   --col-opp: 1fr;
   --col-rec: 180px; 
   --col-site: 180px;
@@ -33,8 +32,7 @@
     --font-meta: 18px;
     --logo-header: 30px; 
     --logo-sm: 24px;          
-    --col-date: 65px;
-    --col-time: 85px;
+    --col-datetime: 110px; /* Combined Date & Time column */
     --col-opp: 1fr;
     --col-rec: 75px; 
     --col-site: 70px;
@@ -59,7 +57,7 @@
   font-smoothing: none !important;
   font-variant-ligatures: none;
   
-  /* ✅ Optimizations for numerical alignment and digit legibility */
+  /* Optimizations for numerical alignment and digit legibility */
   font-variant-numeric: tabular-nums; 
   font-feature-settings: "cv05" 1, "tnum" 1;
 }
@@ -102,7 +100,7 @@
 /* THE GRID */
 .nd-row {
   display: grid;
-  grid-template-columns: var(--col-date) var(--col-time) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
+  grid-template-columns: var(--col-datetime) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
   width: 100%; 
   align-items: center; 
 }
@@ -118,9 +116,27 @@
   font-weight: 900 !important; 
 }
 
-.nd-row:not(.nd-head) .date,
-.nd-row:not(.nd-head) .time {
+/* COMBINED DATE & TIME STYLES */
+.datetime { 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nd-head .datetime {
+  display: block; /* Keeps the header as a simple block rather than a stacked flex column */
+}
+
+.dt-date {
   font-size: var(--font-meta) !important;
+  font-weight: 900;
+}
+
+.dt-time {
+  /* Make time slightly smaller to create a clean visual hierarchy beneath the date */
+  font-size: calc(var(--font-meta) * 0.75) !important;
   font-weight: 700;
 }
 
