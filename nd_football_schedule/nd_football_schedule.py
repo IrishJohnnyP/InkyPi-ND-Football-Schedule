@@ -102,12 +102,18 @@ class NDFootballSchedule(BasePlugin):
         team_data = data.get("team", {})
         team_data["logo"] = self._get_local_logo_b64("Notre Dame", logo_dir)
 
-        # Inject local opponent logos for schedule rows
+        # Inject local opponent logos and clean up poll names for schedule rows
         games_data = data.get("games", [])
         for game in games_data:
             opp = game.get("opponent", {})
             opp_name = opp.get("name") or opp.get("id")
             opp["logo"] = self._get_local_logo_b64(opp_name, logo_dir)
+            
+            # Shorten "Playoff Committee Rankings" to "CFP RANKINGS" 
+            raw_poll_name = str(opp.get("rankPoll", "")).upper()
+            if "PLAYOFF" in raw_poll_name:
+                opp["rankPoll"] = "CFP RANKINGS"
+                opp["rankSource"] = "CFP RANKINGS"
 
         image = self.render_image(
             dimensions,
