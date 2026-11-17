@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Roboto';
-  src: url('../../../static/fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+  font-family: 'Inter';
+  src: url('../../../static/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
 }
@@ -115,7 +115,7 @@
 
 /* HARDWARE OPTIMIZATION */
 .nd-container, .nd-container * {
-  font-family: 'Roboto', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   color: #000 !important;
   box-sizing: border-box;
   background-color: transparent !important;
