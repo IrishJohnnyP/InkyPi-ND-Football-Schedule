@@ -10,7 +10,7 @@
   --container-padding: 20px;
   --header-font: 72px;
   --header-rec-font: 42px;
-  --font-normal: 54px;
+  --font-normal: 52px; /* was 54 */
   --font-meta: 42px;
   --logo-header: 75px;
   --logo-sm: 70px;
@@ -57,10 +57,10 @@
     --container-padding: 8px;
     --header-font: 24px;
     --header-rec-font: 20px;
-    --font-normal: 19px;
+    --font-normal: 22px; /* Was 19 */
     --font-meta: 16px;
     --logo-header: 28px;
-    --logo-sm: 22px;
+    --logo-sm: 24px; /* was 22 */
     --col-datetime: 75px;
     --col-opp: 1fr;
     --col-rec: 75px;
