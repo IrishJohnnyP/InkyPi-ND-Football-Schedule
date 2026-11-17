@@ -8,9 +8,15 @@
 /* 13.3" (1600x1200) Variables - Default State */
 :root {
   --container-padding: 20px;
+  --container-pad-top: 5px;
+  --container-pad-bottom: 5px;
+  --line-height: 1.15;
   --header-font: 72px;
   --header-rec-font: 42px;
-  --font-normal: 53px; /* was 54 */
+  --header-pad-bottom: 4px;
+  --header-left-pad-y: 3px;
+  --head-pad-bottom: 5px;
+  --font-normal: 53px;
   --font-meta: 42px;
   --logo-header: 75px;
   --logo-sm: 70px;
@@ -19,6 +25,9 @@
   --col-rec: 180px;
   --col-site: 180px;
   --col-res: 260px;
+  --opp-pad-y: 4px;
+  --school-pad-y: 3px;
+  --row-pad-bottom: 6px;
   --nickname-display: inline;
 
   /* Two-ring zero-blur pure-#FFFFFF octagonal halo (3.5px outer / 2px inner for 1600x1200) */
@@ -55,17 +64,26 @@
 @media (max-width: 800px) {
   :root {
     --container-padding: 8px;
+    --container-pad-top: 1px;
+    --container-pad-bottom: 2px;
+    --line-height: 1.06;
     --header-font: 24px;
     --header-rec-font: 20px;
-    --font-normal: 20px; /* Was 19 */
+    --header-pad-bottom: 2px;
+    --header-left-pad-y: 1px;
+    --head-pad-bottom: 2px;
+    --font-normal: 20px;
     --font-meta: 16px;
-    --logo-header: 28px;
-    --logo-sm: 22px; /* was 22 */
+    --logo-header: 26px;
+    --logo-sm: 21px;
     --col-datetime: 75px;
     --col-opp: 1fr;
     --col-rec: 75px;
     --col-site: 65px;
     --col-res: 125px;
+    --opp-pad-y: 1.5px;
+    --school-pad-y: 1.5px;
+    --row-pad-bottom: 1.5px;
     --nickname-display: inline;
 
     /* Two-ring zero-blur pure-#FFFFFF octagonal halo (2px outer / 1px inner for 800x480) */
@@ -98,18 +116,12 @@
     --rule-halo: 0 -1px 0 #ffffff, 0 1px 0 #ffffff;
   }
 
-  .nd-container {
-    padding: 3px var(--container-padding) 3px var(--container-padding);
-  }
-
   .nd-header {
     border-bottom: 4px solid #000 !important;
-    padding-bottom: 2px !important;
   }
 
   .nd-head {
     border-bottom: 2px solid #000 !important;
-    padding-bottom: 2px !important;
   }
 }
 
@@ -120,8 +132,7 @@
   box-sizing: border-box;
   background-color: transparent !important;
 
-  /* Increased to accommodate descenders (g, y, j, p, q) */
-  line-height: 1.15 !important;
+  line-height: var(--line-height) !important;
 
   /* Crisp edges for e-ink rendering */
   text-rendering: auto;
@@ -142,7 +153,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 5px var(--container-padding) 5px var(--container-padding);
+  padding: var(--container-pad-top) var(--container-padding) var(--container-pad-bottom) var(--container-padding);
   overflow: hidden;
   justify-content: space-between;
 }
@@ -161,10 +172,16 @@
   justify-content: space-between;
   border-bottom: 8px solid #000;
   box-shadow: var(--rule-halo);
-  padding-bottom: 4px;
+  padding-bottom: var(--header-pad-bottom);
 }
 
-.nd-header-left { display: flex; align-items: center; gap: 15px; padding: 3px 0; }
+.nd-header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: var(--header-left-pad-y) 0;
+}
+
 .nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
 .nd-header-right { font-size: var(--header-rec-font) !important; font-weight: 900 !important; }
 
@@ -179,7 +196,7 @@
 .nd-head {
   border-bottom: 4px solid #000;
   box-shadow: var(--rule-halo);
-  padding-bottom: 5px;
+  padding-bottom: var(--head-pad-bottom);
 }
 
 .nd-head div,
@@ -230,7 +247,7 @@
   align-items: center;
   min-width: 0;
   overflow: hidden;
-  padding: 4px 4px 4px 4px;
+  padding: var(--opp-pad-y) 4px var(--opp-pad-y) 4px;
 }
 
 /* LOGOS */
@@ -261,7 +278,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 3px 4px 3px 0;
+  padding: var(--school-pad-y) 4px var(--school-pad-y) 0;
 }
 
 .nickname {
@@ -280,12 +297,5 @@
 .nd-row:not(.nd-head):not(:last-child) {
   border-bottom: 2px solid #000;
   box-shadow: var(--rule-halo);
-  padding-bottom: 6px;
-}
-
-@media (max-width: 800px) {
-  .nd-row:not(.nd-head):not(:last-child) {
-    padding-bottom: 2px;
-    border-bottom: 2px solid #000;
-  }
+  padding-bottom: var(--row-pad-bottom);
 }
