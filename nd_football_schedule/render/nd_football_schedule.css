@@ -8,26 +8,27 @@
 /* 13.3" (1600x1200) Variables - Default State */
 :root {
   --container-padding: 20px;
-  --container-pad-top: 5px;
-  --container-pad-bottom: 5px;
-  --line-height: 1.15;
-  --header-font: 72px;
-  --header-rec-font: 42px;
+  --container-pad-top: 4px;
+  --container-pad-bottom: 4px;
+  --line-height: 1.10;
+  --header-font: 64px;
+  --header-rec-font: 38px;
   --header-pad-bottom: 4px;
-  --header-left-pad-y: 3px;
-  --head-pad-bottom: 5px;
-  --font-normal: 53px;
-  --font-meta: 42px;
-  --logo-header: 75px;
-  --logo-sm: 70px;
-  --col-datetime: 140px;
+  --header-left-pad-y: 2px;
+  --head-pad-bottom: 4px;
+  --font-normal: 46px;
+  --font-meta: 36px;
+  --logo-header: 66px;
+  --logo-sm: 58px;
+  --col-datetime: 135px;
   --col-opp: 1fr;
-  --col-rec: 180px;
-  --col-site: 180px;
-  --col-res: 260px;
-  --opp-pad-y: 4px;
-  --school-pad-y: 3px;
-  --row-pad-bottom: 6px;
+  --col-rec: 170px;
+  --col-site: 170px;
+  --col-res: 245px;
+  --opp-pad-y: 3px;
+  --school-pad-y: 2px;
+  --row-pad-bottom: 4px;
+  --row-border-width: 3px;
   --nickname-display: inline;
 
   /* Two-ring zero-blur pure-#FFFFFF octagonal halo (3.5px outer / 2px inner for 1600x1200) */
@@ -57,7 +58,6 @@
     drop-shadow( 2px   -2px    0 #ffffff)
     drop-shadow(-2px    2px    0 #ffffff)
     drop-shadow( 2px    2px    0 #ffffff);
-  --rule-halo: 0 -2px 0 #ffffff, 0 2px 0 #ffffff;
 }
 
 /* 7.3" (800x480) Variables - Small Panel State */
@@ -84,6 +84,7 @@
     --opp-pad-y: 1.5px;
     --school-pad-y: 1.5px;
     --row-pad-bottom: 1.5px;
+    --row-border-width: 2px;
     --nickname-display: inline;
 
     /* Two-ring zero-blur pure-#FFFFFF octagonal halo (2px outer / 1px inner for 800x480) */
@@ -113,7 +114,6 @@
       drop-shadow( 1px   -1px    0 #ffffff)
       drop-shadow(-1px    1px    0 #ffffff)
       drop-shadow( 1px    1px    0 #ffffff);
-    --rule-halo: 0 -1px 0 #ffffff, 0 1px 0 #ffffff;
   }
 
   .nd-header {
@@ -171,7 +171,6 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 8px solid #000;
-  box-shadow: var(--rule-halo);
   padding-bottom: var(--header-pad-bottom);
 }
 
@@ -195,7 +194,6 @@
 
 .nd-head {
   border-bottom: 4px solid #000;
-  box-shadow: var(--rule-halo);
   padding-bottom: var(--head-pad-bottom);
 }
 
@@ -293,9 +291,8 @@
 .loss { color: #FF0000 !important; font-weight: 900; }
 .rank { font-size: 1.0em !important; color: #000 !important; font-weight: 700; margin-right: 5px; }
 
-/* Dividing lines between games with white halos */
+/* Solid black dividing lines between games */
 .nd-row:not(.nd-head):not(:last-child) {
-  border-bottom: 2px solid #000;
-  box-shadow: var(--rule-halo);
+  border-bottom: var(--row-border-width) solid #000;
   padding-bottom: var(--row-pad-bottom);
 }
