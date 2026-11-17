@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Inter';
-  src: url('../../../static/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-family: 'Roboto Condensed';
+  src: url('../../../static/fonts/RobotoCondensed-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
 }
@@ -115,7 +115,7 @@
 
 /* HARDWARE OPTIMIZATION */
 .nd-container, .nd-container * {
-  font-family: Inter, sans-serif !important;
+  font-family: 'Roboto Condensed', sans-serif !important;
   color: #000 !important;
   box-sizing: border-box;
   background-color: transparent !important;
@@ -266,7 +266,7 @@
 
 .nickname {
   display: var(--nickname-display) !important;
-  font-size: 0.80em !important;
+  font-size: 1.0em !important;
   font-weight: 500 !important;
   color: #000 !important;
   margin-left: 4px;
