@@ -8,20 +8,20 @@
 /* 13.3" (1600x1200) Variables - Default State */
 :root {
   --container-padding: 20px;
-  --header-font: 72px;  
+  --header-font: 72px;
   --header-rec-font: 42px;
-  --font-normal: 54px;        
+  --font-normal: 54px;
   --font-meta: 42px;
-  --logo-header: 75px; 
-  --logo-sm: 70px;            
-  --col-datetime: 140px; 
+  --logo-header: 75px;
+  --logo-sm: 70px;
+  --col-datetime: 140px;
   --col-opp: 1fr;
-  --col-rec: 180px; 
+  --col-rec: 180px;
   --col-site: 180px;
   --col-res: 260px;
   --nickname-display: inline;
 
-  /* Zero-blur pure-#FFFFFF halos (2px octagonal contour for 1600x1200) */
+  /* Two-ring zero-blur pure-#FFFFFF octagonal halo (3.5px outer / 2px inner for 1600x1200) */
   --text-halo:
     -2px    0      0 #ffffff,
      2px    0      0 #ffffff,
@@ -30,62 +30,83 @@
     -1.5px -1.5px  0 #ffffff,
      1.5px -1.5px  0 #ffffff,
     -1.5px  1.5px  0 #ffffff,
-     1.5px  1.5px  0 #ffffff;
+     1.5px  1.5px  0 #ffffff,
+    -3.5px  0      0 #ffffff,
+     3.5px  0      0 #ffffff,
+     0     -3.5px  0 #ffffff,
+     0      3.5px  0 #ffffff,
+    -2.5px -2.5px  0 #ffffff,
+     2.5px -2.5px  0 #ffffff,
+    -2.5px  2.5px  0 #ffffff,
+     2.5px  2.5px  0 #ffffff;
   --logo-halo:
-    drop-shadow(-2px    0      0 #ffffff)
-    drop-shadow( 2px    0      0 #ffffff)
-    drop-shadow( 0     -2px    0 #ffffff)
-    drop-shadow( 0      2px    0 #ffffff)
-    drop-shadow(-1.5px -1.5px  0 #ffffff)
-    drop-shadow( 1.5px -1.5px  0 #ffffff)
-    drop-shadow(-1.5px  1.5px  0 #ffffff)
-    drop-shadow( 1.5px  1.5px  0 #ffffff);
+    drop-shadow(-2.5px  0      0 #ffffff)
+    drop-shadow( 2.5px  0      0 #ffffff)
+    drop-shadow( 0     -2.5px  0 #ffffff)
+    drop-shadow( 0      2.5px  0 #ffffff)
+    drop-shadow(-2px   -2px    0 #ffffff)
+    drop-shadow( 2px   -2px    0 #ffffff)
+    drop-shadow(-2px    2px    0 #ffffff)
+    drop-shadow( 2px    2px    0 #ffffff);
+  --rule-halo: 0 -2px 0 #ffffff, 0 2px 0 #ffffff;
 }
 
-/* 7.3" (800x480) Variables - Mobile/Small Panel State */
+/* 7.3" (800x480) Variables - Small Panel State */
 @media (max-width: 800px) {
   :root {
     --container-padding: 8px;
-    --header-font: 24px; /* Reduced from 26 */
-    --header-rec-font: 20px; /* Reduced from 22 */
-    --font-normal: 19px; /* Reduced from 21 */
-    --font-meta: 16px; /* Reduced from 18 */
-    --logo-header: 28px; /* Reduced from 30 */
-    --logo-sm: 22px; /* Reduced from 24 */
-    --col-datetime: 75px; 
-    --col-opp: 1fr; 
-    --col-rec: 75px; 
-    --col-site: 65px; /* Shaved 5px to give room */
-    --col-res: 125px; 
+    --header-font: 24px;
+    --header-rec-font: 20px;
+    --font-normal: 19px;
+    --font-meta: 16px;
+    --logo-header: 28px;
+    --logo-sm: 22px;
+    --col-datetime: 75px;
+    --col-opp: 1fr;
+    --col-rec: 75px;
+    --col-site: 65px;
+    --col-res: 125px;
     --nickname-display: inline;
 
-    /* Tighter 1px zero-blur halo so smaller text and 22px logos stay crisp */
+    /* Two-ring zero-blur pure-#FFFFFF octagonal halo (2px outer / 1px inner for 800x480) */
     --text-halo:
-      -1px  0   0 #ffffff,
-       1px  0   0 #ffffff,
-       0   -1px 0 #ffffff,
-       0    1px 0 #ffffff,
-      -1px -1px 0 #ffffff,
-       1px -1px 0 #ffffff,
-      -1px  1px 0 #ffffff,
-       1px  1px 0 #ffffff;
+      -1px    0      0 #ffffff,
+       1px    0      0 #ffffff,
+       0     -1px    0 #ffffff,
+       0      1px    0 #ffffff,
+      -1px   -1px    0 #ffffff,
+       1px   -1px    0 #ffffff,
+      -1px    1px    0 #ffffff,
+       1px    1px    0 #ffffff,
+      -2px    0      0 #ffffff,
+       2px    0      0 #ffffff,
+       0     -2px    0 #ffffff,
+       0      2px    0 #ffffff,
+      -1.5px -1.5px  0 #ffffff,
+       1.5px -1.5px  0 #ffffff,
+      -1.5px  1.5px  0 #ffffff,
+       1.5px  1.5px  0 #ffffff;
     --logo-halo:
-      drop-shadow(-1px  0   0 #ffffff)
-      drop-shadow( 1px  0   0 #ffffff)
-      drop-shadow( 0   -1px 0 #ffffff)
-      drop-shadow( 0    1px 0 #ffffff)
-      drop-shadow(-1px -1px 0 #ffffff)
-      drop-shadow( 1px -1px 0 #ffffff)
-      drop-shadow(-1px  1px 0 #ffffff)
-      drop-shadow( 1px  1px 0 #ffffff);
+      drop-shadow(-1.5px  0      0 #ffffff)
+      drop-shadow( 1.5px  0      0 #ffffff)
+      drop-shadow( 0     -1.5px  0 #ffffff)
+      drop-shadow( 0      1.5px  0 #ffffff)
+      drop-shadow(-1px   -1px    0 #ffffff)
+      drop-shadow( 1px   -1px    0 #ffffff)
+      drop-shadow(-1px    1px    0 #ffffff)
+      drop-shadow( 1px    1px    0 #ffffff);
+    --rule-halo: 0 -1px 0 #ffffff, 0 1px 0 #ffffff;
   }
 
-  /* Thin out the thick header borders on the small screen to save vertical space */
+  .nd-container {
+    padding: 3px var(--container-padding) 3px var(--container-padding);
+  }
+
   .nd-header {
     border-bottom: 4px solid #000 !important;
     padding-bottom: 2px !important;
   }
-  
+
   .nd-head {
     border-bottom: 2px solid #000 !important;
     padding-bottom: 2px !important;
@@ -98,18 +119,18 @@
   color: #000 !important;
   box-sizing: border-box;
   background-color: transparent !important;
-  
+
   /* Increased to accommodate descenders (g, y, j, p, q) */
-  line-height: 1.15 !important; 
-  
+  line-height: 1.15 !important;
+
   /* Crisp edges for e-ink rendering */
-  text-rendering: auto; 
-  -webkit-font-smoothing: none !important; 
+  text-rendering: auto;
+  -webkit-font-smoothing: none !important;
   font-smoothing: none !important;
   font-variant-ligatures: none;
-  
+
   /* Optimizations for numerical alignment and digit legibility */
-  font-variant-numeric: tabular-nums; 
+  font-variant-numeric: tabular-nums;
   font-feature-settings: "cv05" 1, "tnum" 1;
 
   /* Solid white zero-blur halo around all schedule typography */
@@ -117,37 +138,33 @@
 }
 
 .nd-container {
-  /* Fluid dimensions: Relies on Python/Headless browser setting the exact viewport size */
-  width: 100%; 
-  height: 100%; 
-  display: flex; 
+  width: 100%;
+  height: 100%;
+  display: flex;
   flex-direction: column;
-  padding: 0px var(--container-padding) 1px var(--container-padding);
+  padding: 5px var(--container-padding) 5px var(--container-padding);
   overflow: hidden;
-  
-  /* Active Schedule: Flexbox layout perfectly distributes rows evenly from top to bottom */
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
-/* Empty Schedule: Safely pack elements at the top to prevent massive gaps */
 .nd-container.empty-schedule {
   justify-content: flex-start;
 }
 
-/* Empty Schedule: Add a clean gap right below the main bar so it doesn't look cramped */
 .nd-container.empty-schedule .nd-head {
   margin-top: 25px;
 }
 
 .nd-header {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  border-bottom: 8px solid #000; 
-  padding-bottom: 4px; 
+  border-bottom: 8px solid #000;
+  box-shadow: var(--rule-halo);
+  padding-bottom: 4px;
 }
 
-.nd-header-left { display: flex; align-items: center; gap: 15px; padding: 2px 0; }
+.nd-header-left { display: flex; align-items: center; gap: 15px; padding: 3px 0; }
 .nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
 .nd-header-right { font-size: var(--header-rec-font) !important; font-weight: 900 !important; }
 
@@ -155,32 +172,34 @@
 .nd-row {
   display: grid;
   grid-template-columns: var(--col-datetime) var(--col-opp) var(--col-rec) var(--col-site) var(--col-res);
-  width: 100%; 
-  align-items: center; 
+  width: 100%;
+  align-items: center;
 }
 
-.nd-head { 
-  border-bottom: 4px solid #000; 
-  padding-bottom: 5px; 
+.nd-head {
+  border-bottom: 4px solid #000;
+  box-shadow: var(--rule-halo);
+  padding-bottom: 5px;
 }
 
-.nd-head div, 
-.nd-head .opp { 
-  font-size: calc(var(--font-normal) * 0.85) !important; 
-  font-weight: 900 !important; 
+.nd-head div,
+.nd-head .opp {
+  font-size: calc(var(--font-normal) * 0.85) !important;
+  font-weight: 900 !important;
 }
 
 /* COMBINED DATE & TIME STYLES */
-.datetime { 
-  text-align: left; 
+.datetime {
+  text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding-left: 3px;
 }
 
 .nd-head .datetime {
-  display: block; 
+  display: block;
   text-align: left;
 }
 
@@ -194,56 +213,61 @@
   font-weight: 700;
 }
 
-.school, .opp-record, .site, .result { 
-  font-size: var(--font-normal) !important; 
+.school, .opp-record, .site, .result {
+  font-size: var(--font-normal) !important;
 }
 
-/* BOLD HOME SITE */
 .site strong {
   font-weight: 700 !important;
 }
 
 .opp-record, .site { text-align: center; }
-.result { text-align: right; }
+.result { text-align: right; padding-right: 4px; }
 
-/* Small left/vertical padding prevents overflow:hidden from clipping logo drop-shadows */
-.opp { 
-  display: flex; 
-  align-items: center; 
-  min-width: 0; 
-  overflow: hidden; 
-  padding: 2px 0 2px 3px;
+/* Padding prevents overflow:hidden from clipping logo and text halos */
+.opp {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  padding: 4px 4px 4px 4px;
 }
 
 /* LOGOS */
-.nd-logo { 
-  height: var(--logo-header) !important; 
-  width: auto !important; 
-  object-fit: contain; 
+.nd-logo {
+  height: var(--logo-header) !important;
+  width: auto !important;
+  object-fit: contain;
   image-rendering: -webkit-optimize-contrast !important;
   image-rendering: crisp-edges !important;
   image-rendering: pixelated !important;
   filter: var(--logo-halo) !important;
 }
 
-.logo-sm { 
-  width: var(--logo-sm) !important; 
-  height: var(--logo-sm) !important; 
-  margin-right: 12px; 
-  flex-shrink: 0; 
-  object-fit: contain; 
+.logo-sm {
+  width: var(--logo-sm) !important;
+  height: var(--logo-sm) !important;
+  margin-right: 12px;
+  flex-shrink: 0;
+  object-fit: contain;
   image-rendering: -webkit-optimize-contrast !important;
   image-rendering: crisp-edges !important;
   image-rendering: pixelated !important;
   filter: var(--logo-halo) !important;
 }
 
-.school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.school {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 3px 4px 3px 0;
+}
 
 .nickname {
   display: var(--nickname-display) !important;
   font-size: 0.90em !important;
-  font-weight: 500 !important; 
+  font-weight: 500 !important;
   color: #000 !important;
   margin-left: 4px;
 }
@@ -252,16 +276,16 @@
 .loss { color: #FF0000 !important; font-weight: 900; }
 .rank { font-size: 1.0em !important; color: #000 !important; font-weight: 700; margin-right: 5px; }
 
-/* Adds a dividing line between games, skipping the header and the last game */
+/* Dividing lines between games with white halos */
 .nd-row:not(.nd-head):not(:last-child) {
   border-bottom: 2px solid #000;
+  box-shadow: var(--rule-halo);
   padding-bottom: 6px;
 }
 
-/* Tighter spacing for the small screen */
 @media (max-width: 800px) {
   .nd-row:not(.nd-head):not(:last-child) {
-    padding-bottom: 2px; 
-    border-bottom: 2px solid #000; /* Thinning the row dividers slightly to save vertical space */
+    padding-bottom: 2px;
+    border-bottom: 2px solid #000;
   }
 }
