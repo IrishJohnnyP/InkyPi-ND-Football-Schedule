@@ -20,6 +20,26 @@
   --col-site: 180px;
   --col-res: 260px;
   --nickname-display: inline;
+
+  /* Zero-blur pure-#FFFFFF halos (2px octagonal contour for 1600x1200) */
+  --text-halo:
+    -2px    0      0 #ffffff,
+     2px    0      0 #ffffff,
+     0     -2px    0 #ffffff,
+     0      2px    0 #ffffff,
+    -1.5px -1.5px  0 #ffffff,
+     1.5px -1.5px  0 #ffffff,
+    -1.5px  1.5px  0 #ffffff,
+     1.5px  1.5px  0 #ffffff;
+  --logo-halo:
+    drop-shadow(-2px    0      0 #ffffff)
+    drop-shadow( 2px    0      0 #ffffff)
+    drop-shadow( 0     -2px    0 #ffffff)
+    drop-shadow( 0      2px    0 #ffffff)
+    drop-shadow(-1.5px -1.5px  0 #ffffff)
+    drop-shadow( 1.5px -1.5px  0 #ffffff)
+    drop-shadow(-1.5px  1.5px  0 #ffffff)
+    drop-shadow( 1.5px  1.5px  0 #ffffff);
 }
 
 /* 7.3" (800x480) Variables - Mobile/Small Panel State */
@@ -38,6 +58,26 @@
     --col-site: 65px; /* Shaved 5px to give room */
     --col-res: 125px; 
     --nickname-display: inline;
+
+    /* Tighter 1px zero-blur halo so smaller text and 22px logos stay crisp */
+    --text-halo:
+      -1px  0   0 #ffffff,
+       1px  0   0 #ffffff,
+       0   -1px 0 #ffffff,
+       0    1px 0 #ffffff,
+      -1px -1px 0 #ffffff,
+       1px -1px 0 #ffffff,
+      -1px  1px 0 #ffffff,
+       1px  1px 0 #ffffff;
+    --logo-halo:
+      drop-shadow(-1px  0   0 #ffffff)
+      drop-shadow( 1px  0   0 #ffffff)
+      drop-shadow( 0   -1px 0 #ffffff)
+      drop-shadow( 0    1px 0 #ffffff)
+      drop-shadow(-1px -1px 0 #ffffff)
+      drop-shadow( 1px -1px 0 #ffffff)
+      drop-shadow(-1px  1px 0 #ffffff)
+      drop-shadow( 1px  1px 0 #ffffff);
   }
 
   /* Thin out the thick header borders on the small screen to save vertical space */
@@ -71,6 +111,9 @@
   /* Optimizations for numerical alignment and digit legibility */
   font-variant-numeric: tabular-nums; 
   font-feature-settings: "cv05" 1, "tnum" 1;
+
+  /* Solid white zero-blur halo around all schedule typography */
+  text-shadow: var(--text-halo) !important;
 }
 
 .nd-container {
@@ -104,7 +147,7 @@
   padding-bottom: 4px; 
 }
 
-.nd-header-left { display: flex; align-items: center; gap: 15px; }
+.nd-header-left { display: flex; align-items: center; gap: 15px; padding: 2px 0; }
 .nd-name { font-size: var(--header-font) !important; font-weight: 900 !important; }
 .nd-header-right { font-size: var(--header-rec-font) !important; font-weight: 900 !important; }
 
@@ -163,7 +206,14 @@
 .opp-record, .site { text-align: center; }
 .result { text-align: right; }
 
-.opp { display: flex; align-items: center; min-width: 0; overflow: hidden; }
+/* Small left/vertical padding prevents overflow:hidden from clipping logo drop-shadows */
+.opp { 
+  display: flex; 
+  align-items: center; 
+  min-width: 0; 
+  overflow: hidden; 
+  padding: 2px 0 2px 3px;
+}
 
 /* LOGOS */
 .nd-logo { 
@@ -173,6 +223,7 @@
   image-rendering: -webkit-optimize-contrast !important;
   image-rendering: crisp-edges !important;
   image-rendering: pixelated !important;
+  filter: var(--logo-halo) !important;
 }
 
 .logo-sm { 
@@ -184,6 +235,7 @@
   image-rendering: -webkit-optimize-contrast !important;
   image-rendering: crisp-edges !important;
   image-rendering: pixelated !important;
+  filter: var(--logo-halo) !important;
 }
 
 .school { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -198,8 +250,7 @@
 
 /* COLORS */
 .loss { color: #FF0000 !important; font-weight: 900; }
-.rank { font-size: 1.0em !important; color: #000 !important; font-weight: 700; margin-right: 5px; 
-}
+.rank { font-size: 1.0em !important; color: #000 !important; font-weight: 700; margin-right: 5px; }
 
 /* Adds a dividing line between games, skipping the header and the last game */
 .nd-row:not(.nd-head):not(:last-child) {
